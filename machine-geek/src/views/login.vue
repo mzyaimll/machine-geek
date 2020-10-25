@@ -7,15 +7,15 @@
         ref="ruleForm"
       >
       <h3>登录</h3>
-      <a-form-item required has-feedback label="用户名"  name="name">
+      <a-form-item required has-feedback label="用户名"  name="username">
           <a-input
             v-model:value="ruleForm.username"
             autocomplete="off"
           />
         </a-form-item>
-        <a-form-item required has-feedback label="密码" name="pass">
+        <a-form-item required has-feedback label="密码" name="password">
           <a-input
-            v-model:value="ruleForm.pass"
+            v-model:value="ruleForm.password"
             type="password"
             autocomplete="off"
           />
@@ -32,20 +32,28 @@
 </template>
 <script lang="ts">
 import {defineComponent, PropType} from 'vue'
+import api from '@/api'
 
 const Component = defineComponent({
+  setup() {
+
+  },
   props:{},
   data() {
     return {
       ruleForm: {
         username: "",
-        pass: "",
+        password: "",
       }
     }
   },
   methods: {
     login() {
-      console.log("click");
+      api.common.system_login(this.ruleForm).then((res:any) => {
+        if(res.success) {
+          console.log(res.data);
+        }
+      })
     },
     resetForm() {
       console.log("reset");
@@ -75,14 +83,11 @@ export default Component
   }
   form{
     margin-top: 20px;
-    input {
-      // background-color: #36393f;
-      // border: none;
-    }
   }
 }
 .login {
-  width: 100vw;
+  width: 100%;
+  min-width: 2400px;
   height: 100vh;
   background-image: url("./../assets/bg.jpg");
   background-repeat: no-repeat;

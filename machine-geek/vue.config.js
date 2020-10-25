@@ -23,6 +23,18 @@ const vueConfig = {
     },
 
     lintOnSave: true,
+    devServer: {
+        port: 8088,
+        proxy: {
+            '/api': {
+                target: 'http://nat.machine-geek.cn/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '',
+                },
+            },
+        },
+    },
 }
 
 // if (isProd()) {

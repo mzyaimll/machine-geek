@@ -1,10 +1,13 @@
 import axios from 'axios'
+import baseConfig from '@/static/config'
 
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;'
+axios.defaults.headers.post['charset'] = 'UTF-8;'
 axios.defaults.withCredentials = true
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 const service = axios.create({
-    baseURL: '/',
+    // baseURL: baseConfig.serverUrl+'api',
+    baseURL: '/api',
     timeout: 15000,
 })
 
