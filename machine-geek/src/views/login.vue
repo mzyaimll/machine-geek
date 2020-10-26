@@ -51,7 +51,7 @@ const Component = defineComponent({
     login() {
       api.common.system_login(this.ruleForm).then((res:any) => {
         if(res.success) {
-          console.log(res.data);
+          alert('登录成功')
         }
       })
     },
