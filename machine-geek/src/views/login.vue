@@ -7,13 +7,13 @@
         ref="ruleForm"
       >
       <h3>登录</h3>
-      <a-form-item required has-feedback label="用户名"  name="username">
+      <a-form-item label="用户名"  name="username">
           <a-input
             v-model:value="ruleForm.username"
             autocomplete="off"
           />
         </a-form-item>
-        <a-form-item required has-feedback label="密码" name="password">
+        <a-form-item label="密码" name="password">
           <a-input
             v-model:value="ruleForm.password"
             type="password"
@@ -33,6 +33,7 @@
 <script lang="ts">
 import {defineComponent, PropType} from 'vue'
 import api from '@/api'
+import lockr from '@/utils/lockr'
 
 const Component = defineComponent({
   setup() {
@@ -51,6 +52,7 @@ const Component = defineComponent({
     login() {
       api.common.system_login(this.ruleForm).then((res:any) => {
         if(res.success) {
+          lockr.set('Token',res.data.accessToken)
           alert('登录成功')
         }
       })
