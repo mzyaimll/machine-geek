@@ -25,7 +25,16 @@ const routes: Array<RouteRecordRaw> = [
           icon: '',
         },
         component: () => import ('@/views/user/index.vue')
-      }
+      },
+      {
+        path: '/interface-manager',
+        name: 'interface-manager',
+        meta: {
+          title: '接口管理',
+          icon: '',
+        },
+        component: () => import ('@/views/interface/index.vue')
+      },
     ],
     component: () => import('@/views/main.vue')
   },
