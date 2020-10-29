@@ -9,6 +9,15 @@ const routes: Array<RouteRecordRaw> = [
     name:'Main',
     children: [
       {
+        path: '/main-layout',
+        name: 'main-layout',
+        meta: {
+          title: '主页',
+          icon: '',
+        },
+        component: () => import ('@/views/main/index.vue')
+      },
+      {
         path: '/role-manager',
         name: 'role-manager',
         meta: {
@@ -35,6 +44,7 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import ('@/views/interface/index.vue')
       },
+      
     ],
     component: () => import('@/views/main.vue')
   },
