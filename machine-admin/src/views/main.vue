@@ -6,12 +6,7 @@
 <script>
 import routes from "@/router/index";
 
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  setup(props, context) {
-    return {};
-  },
+export default {
   data() {
     return {
       routers: [],
@@ -20,14 +15,12 @@ export default defineComponent({
     };
   },
   methods: {
-    handleClick(e) {
-      // this.$router.push(e.key)
-    },
+
   },
   mounted() {
     this.routers = routes.options.routes[0].children;
   },
-});
+};
 </script>
 <style>
 #components-layout-demo-custom-trigger {
