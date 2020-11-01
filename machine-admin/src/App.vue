@@ -9,6 +9,7 @@
   <div class="main-container">
     main
     <router-view></router-view>
+    
   </div>
 </div>
 </template>
