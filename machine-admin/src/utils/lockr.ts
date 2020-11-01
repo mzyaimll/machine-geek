@@ -2,16 +2,16 @@
  * localstorage 的操作工具
  */
 export default {
-  set(key,val) {
+  set(key:string,val:any) {
     localStorage.setItem(key,val)
   },
-  get(key){
+  get(key:string):any{
     return localStorage.getItem(key)
   },
   clear(){
     localStorage.clear()
   },
-  remove(key) {
+  remove(key:string):boolean {
     localStorage.removeItem(key)
     return !localStorage.getItem(key)
   }

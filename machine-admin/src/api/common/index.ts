@@ -1,12 +1,12 @@
-import request from '@/utils/request'
+import request from './../../utils/request'
 import Qs from 'qs'
 
 export default {
   /**
-   * form表单传参
+   * form表单传参S
    * @param data 
    */
-  system_login (data) {
+  system_login (data:any) {
     return request({
       url: '/login',
       method: "POST",

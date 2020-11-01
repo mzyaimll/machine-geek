@@ -1,5 +1,5 @@
 import axios from 'axios'
-import baseConfig from '@/static/config'
+import baseConfig from './../static/config'
 import lockr from './lockr'
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;'
