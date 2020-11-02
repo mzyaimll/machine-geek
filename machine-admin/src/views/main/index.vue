@@ -1,5 +1,5 @@
 <template>
-  <div class=".flex-center">
+  <div class="main-layout">
     <div class="main-drawer">drawer</div>
     <div class="main-header">header</div>
     <div class="main-container">main</div>
@@ -11,11 +11,14 @@ export default defineComponent({
     
 })
 </script>
-<style>
-.main-drawer {
-  height: 100vh;
-  width: 20%;
-  min-width: 300px;
-  display: flex;
+<style scoped>
+@import url('./main.css');
+$blue: #056ef0;
+.main-layout {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    background-color: $blue;
 }
 </style>
