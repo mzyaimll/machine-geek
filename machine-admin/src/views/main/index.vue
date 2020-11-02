@@ -11,13 +11,11 @@ export default defineComponent({
     
 })
 </script>
-<style lang="scss">
-@import "./../../style/global.scss"; 
+<style>
 .main-drawer {
   height: 100vh;
   width: 20%;
   min-width: 300px;
   display: flex;
-  background-color:$white;
 }
 </style>
