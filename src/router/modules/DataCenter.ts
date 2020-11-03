@@ -34,31 +34,15 @@
  *          :,, , ::::::::i:::i:::i:i::,,,,,:,::i:i:::iir;@Secbone.ii:::
  * 
  * @Author: JackM
- * @Date: 2020-11-02 22:01:53
+ * @Date: 2020-11-03 22:07:54
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-03 22:26:32
+ * @LastEditTime: 2020-11-03 22:35:46
  */
 
-import { createRouter, createWebHistory } from "vue-router";
-import { DataCenter, DevTools, SysManager, SysConfig } from "./modules"
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: () => import("/@/views/Home.vue"),
-  },
-  {
-    path: "/setting",
-    name: "Setting",
-    component: () => import("/@/views/Setting.vue"),
-  },
-  DataCenter,
-  DevTools,
-  SysConfig,
-  SysManager,
-];
-
-export default createRouter({
-  history: createWebHistory("/start-vue3/"),
-  routes,
-});
+export default {
+    path: "/DataCenter",
+    name: "DataCenter",
+    component: () => import("/@/views/DataCenter/index.vue"),
+    children: [
+    ]
+}

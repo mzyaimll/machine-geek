@@ -2,7 +2,11 @@
   <a-layout id="app" style="min-height: 100vh">
     <a-layout-sider v-model:collapsed="collapsed" theme="light" collapsible>
       <Logo :show-title="!collapsed" />
-      <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
+      <a-menu
+        @click="menuClick"
+        v-model:selectedKeys="selectedKeys"
+        mode="inline"
+      >
         <a-sub-menu v-for="items in data" :key="items.path">
           <template #title>
             <pie-chart-outlined />
@@ -95,6 +99,11 @@ export default {
       collapsed: false,
       selectedKeys: ["1"],
     };
+  },
+  methods: {
+    menuClick(e) {
+      if (e) this.$router.push(e.key);
+    },
   },
   mounted() {
     this.data = treeData.data;
