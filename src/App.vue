@@ -3,35 +3,16 @@
     <a-layout-sider v-model:collapsed="collapsed" theme="light" collapsible>
       <Logo :show-title="!collapsed" />
       <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
-        <a-menu-item key="1">
-          <pie-chart-outlined />
-          <span>Option 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <desktop-outlined />
-          <span>Option 2</span>
-        </a-menu-item>
-        <a-sub-menu key="sub1">
+        <a-sub-menu v-for="items in data" :key="items.path">
           <template #title>
-            <user-outlined />
-            <span>User</span>
+            <pie-chart-outlined />
+            <span>{{ items.name }}</span>
           </template>
-          <a-menu-item key="3">Tom</a-menu-item>
-          <a-menu-item key="4">Bill</a-menu-item>
-          <a-menu-item key="5">Alex</a-menu-item>
+          <a-menu-item v-for="item in items.children" :key="item.path">
+            <pie-chart-outlined />
+            <span>{{ item.name }}</span>
+          </a-menu-item>
         </a-sub-menu>
-        <a-sub-menu key="sub2">
-          <template #title>
-            <team-outlined />
-            <span>Team</span>
-          </template>
-          <a-menu-item key="6">Team 1</a-menu-item>
-          <a-menu-item key="8">Team 2</a-menu-item>
-        </a-sub-menu>
-        <a-menu-item key="9">
-          <file-outlined />
-          <span>File</span>
-        </a-menu-item>
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -79,6 +60,7 @@
 
 <script>
 import Logo from "/@/components/Logo.vue";
+import treeData from "/@/treeData";
 
 import {
   // menu
@@ -92,7 +74,7 @@ import {
   SettingFilled,
 } from "@ant-design/icons-vue";
 
-import Dictionary from "/@/utils/HashMap/Dictionary";
+// import Dictionary from "/@/utils/HashMap/Dictionary";
 
 export default {
   name: "App",
@@ -109,15 +91,13 @@ export default {
   },
   data() {
     return {
+      data: [],
       collapsed: false,
       selectedKeys: ["1"],
     };
   },
   mounted() {
-    const dictionary = new Dictionary();
-    dictionary.set("name", "mzy");
-    console.log("hasKey", dictionary.hasKey("name"));
-    console.log("get", dictionary.get("name"));
+    this.data = treeData.data;
   },
 };
 </script>
