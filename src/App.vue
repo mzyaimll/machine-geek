@@ -92,6 +92,8 @@ import {
   SettingFilled,
 } from "@ant-design/icons-vue";
 
+import Dictionary from "/@/utils/HashMap/Dictionary";
+
 export default {
   name: "App",
   components: {
@@ -110,6 +112,12 @@ export default {
       collapsed: false,
       selectedKeys: ["1"],
     };
+  },
+  mounted() {
+    const dictionary = new Dictionary();
+    dictionary.set("name", "mzy");
+    console.log("hasKey", dictionary.hasKey("name"));
+    console.log("get", dictionary.get("name"));
   },
 };
 </script>
