@@ -13,7 +13,6 @@
             <span>{{ items.name }}</span>
           </template>
           <a-menu-item v-for="item in items.children" :key="item.path">
-            <pie-chart-outlined />
             <span>{{ item.name }}</span>
           </a-menu-item>
         </a-sub-menu>
@@ -65,6 +64,7 @@
 <script>
 import Logo from "/@/components/Logo.vue";
 import treeData from "/@/treeData";
+import MenuIcon from "/@/static/menuIcon";
 
 import {
   // menu
@@ -77,8 +77,6 @@ import {
   HomeFilled,
   SettingFilled,
 } from "@ant-design/icons-vue";
-
-// import Dictionary from "/@/utils/HashMap/Dictionary";
 
 export default {
   name: "App",
@@ -96,6 +94,7 @@ export default {
   data() {
     return {
       data: [],
+      MenuIcon,
       collapsed: false,
       selectedKeys: ["1"],
     };
