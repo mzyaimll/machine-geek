@@ -24,31 +24,43 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-05 21:37:51
+ * @LastEditTime: 2020-11-05 22:53:38
  */
 
-import { resolve } from "path";
+import request from '../../utils/request'
 
-function pathResolve(dir: string) {
-  return resolve(__dirname, ".", dir);
+export default {
+  systemRole_add(data: any) {
+    return request({
+      url: '/systemRole/add',
+      method: "POST",
+      data: data
+    })
+  },
+  systemRole_delete(id: number) {
+    return request({
+      url: '/systemRole/deleteById',
+      method: "POST",
+      data: id
+    })
+  },
+  systemRole_update(data: any) {
+    return request({
+      url: '/systemRole/updateById',
+      method: "POST",
+      data: data
+    })
+  },
+  systemRole_query(data: any) {
+    return request({
+      url: '/systemRole/list?page=' + data.page + '&size=' + data.size + '&keyWord=' + data.keyWord,
+      method: "GET"
+    })
+  },
+  systemRole_getById(id: any) {
+    return request({
+      url: '/systemRole/getById?id=' + id,
+      method: "GET"
+    })
+  }
 }
-
-module.exports = {
-  alias: {
-    "/@/": pathResolve("src"),
-  },
-  optimizeDeps: {
-    include: ["@ant-design/icons-vue"],
-  },
-  // otherwise, may assets 404 or visit with index.html
-  base: "/machine-admin/",
-  assetsDir: "",
-  proxy: {
-    '/api': {
-      target: 'http://nat.machine-geek.cn/',
-      changeOrigin: true,
-      rewrite: path => path.replace(/^\/api/, '')
-    }
-  },
-};
-

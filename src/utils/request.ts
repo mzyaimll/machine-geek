@@ -26,12 +26,11 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-03 21:08:40
+ * @LastEditTime: 2020-11-05 21:37:34
  */
 
 
 import axios from 'axios'
-import baseConfig from './../static/config'
 import lockr from './lockr'
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;'
@@ -47,10 +46,11 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     let flag = config.headers['Content-Type'] && config.headers['Content-Type'].indexof('application/json')
-    console.log('lockr', lockr.get('Token'));
     if (lockr.get('Token')) {
-      config.headers['Token'] = lockr.get('Token')
+      // config.headers['Token'] = lockr.get('Token')
+      config.headers['Token'] = "97678a1b-83f5-4092-8d3a-d1c07344c133"
     }
+    config.headers['Token'] = "97678a1b-83f5-4092-8d3a-d1c07344c133"
     return config
   },
   error => {

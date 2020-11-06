@@ -1,4 +1,4 @@
-<!--
+/*
  *                        .::::.
  *                      .::::::::.
  *                     :::::::::::
@@ -19,41 +19,18 @@
  *                        '.:::::'                    ':'````..
  * 
  * @Author: JackM
- * @Date: 2020-11-03 22:30:53
+ * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-05 22:57:06
- -->
-<template>
-  {{ treeData }}
-</template>
-<script lang="ts">
-import { defineComponent } from "vue";
-import api from "/@/api/index";
-import { PAGE_SIZE } from "/@/static/config";
+ * @LastEditTime: 2020-11-05 22:56:51
+ */
 
-export default defineComponent({
-  data() {
-    return {
-      treeData: [],
-    };
-  },
-  mounted() {
-    this.fetch();
-  },
-  methods: {
-    fetch() {
-      api.systemAuthority.authority_getTree().then((res) => {
-        if (res.success) {
-          this.treeData = res.data;
-        }
-      });
-    },
-    handleChange(value: any, key: any, column: string | number) {},
-    edit(key: string) {},
-    save(key: any) {},
-    cancel(key: any) {},
-  },
-});
-</script>
-<style lang="scss" scoped>
-</style>
+import request from '/@/utils/request'
+
+export default {
+    authority_getTree() {
+        return request<{ data: [], success: boolean }>({
+            url: '/systemAuthority/getTree',
+            method: "get",
+        })
+    }
+}
