@@ -95,6 +95,7 @@ export default {
     return {
       data: [],
       MenuIcon,
+      breadcrumb: [],
       collapsed: false,
       selectedKeys: ["1"],
     };
