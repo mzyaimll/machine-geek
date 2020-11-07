@@ -1,5 +1,5 @@
-import request from '../../utils/request'
-import Qs from 'qs'
+import request from '/@/utils/request'
+// import Qs from 'qs'
 
 export default {
   /**
@@ -10,10 +10,10 @@ export default {
     return request({
       url: '/login',
       method: "POST",
-      transformRequest: [function (data) {
-        data = Qs.stringify(data)
-        return data
-      }],
+      // transformRequest: [function (data) {
+      //   data = Qs.stringify(data)
+      //   return data
+      // }],
       data: data
     })
   },
