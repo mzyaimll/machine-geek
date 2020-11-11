@@ -21,7 +21,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-05 22:27:32
+ * @LastEditTime: 2020-11-11 23:09:39
  */
 
 import request from '/@/utils/request'
@@ -48,9 +48,15 @@ export default {
       data: data
     })
   },
+  // systemUser_query(data: any) {
+  //   return request({
+  //     url: '/systemUser/list?page=' + data.page + '&size=' + data.size + '&keyWord=' + data.keyWord,
+  //     method: "GET"
+  //   })
+  // },
   systemUser_query(data: any) {
     return request({
-      url: '/systemUser/list?page=' + data.page + '&size=' + data.size + '&keyWord=' + data.keyWord,
+      url: '/systemUser/paging?page=' + data.page + '&size=' + data.size,
       method: "GET"
     })
   },

@@ -17,20 +17,22 @@
  * @Author: JackM
  * @Date: 2020-11-03 08:56:36
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-04 08:06:08
+ * @LastEditTime: 2020-11-11 22:43:41
  */
 
 
 const iconHasp = new Map()
-iconHasp.set("DATACENTER", "<pie-chart-outlined/>")
-iconHasp.set("DEVELOP", "<pie-chart-outlined/>")
-iconHasp.set("MANAGEMENT", "<pie-chart-outlined/>")
-iconHasp.set("SYSTEM", "<pie-chart-outlined/>")
-iconHasp.set("DEVELOP:GENERATOR", "<pie-chart-outlined/>")
-iconHasp.set("DEVELOP:DATABASE", "<pie-chart-outlined/>")
-iconHasp.set("DEVELOP:EXCEPTION", "<pie-chart-outlined/>")
-iconHasp.set("MANAGEMENT:SYSTEMUSER", "<pie-chart-outlined/>")
-iconHasp.set("MANAGEMENT:SYSTEMROLE", "<pie-chart-outlined/>")
-iconHasp.set("MANAGEMENT:SYSTEMAUTHORITY", "<pie-chart-outlined/>")
+iconHasp.set("DATACENTER", "dashujuzhongxin")
+iconHasp.set("DEVELOP", "kaifazhegongju")
+iconHasp.set("MANAGEMENT", "xitongguanli")
+iconHasp.set("SYSTEM", "xitongshezhi")
+iconHasp.set("DEVELOP:GENERATOR", "daimashengcheng")
+iconHasp.set("DEVELOP:DATAMONITOR", "shujujiankong")
+iconHasp.set("DEVELOP:SYSTEMEXCEPTION", "yicahngxinxi")
+iconHasp.set("DEVELOP:DOCUMENTATION", "wendangguanli")
+iconHasp.set("DEVELOP:APPLICATIONMONITOR", "yingyongjiankong")
+iconHasp.set("MANAGEMENT:SYSTEMUSER", "yonghuguanli")
+iconHasp.set("MANAGEMENT:SYSTEMROLE", "jueseguanli")
+iconHasp.set("MANAGEMENT:SYSTEMAUTHORITY", "quanxianguanli")
 
 export default iconHasp

@@ -4,18 +4,43 @@
       <Logo :show-title="!collapsed" />
       <a-menu
         @click="menuClick"
-        v-model:selectedKeys="selectedKeys"
+        v-model:selectedKeys="state.selectedKeys"
         mode="inline"
       >
-        <a-sub-menu v-for="items in data" :key="items.path">
-          <template #title>
-            <pie-chart-outlined />
-            <span>{{ items.name }}</span>
-          </template>
-          <a-menu-item v-for="item in items.children" :key="item.path">
-            <span>{{ item.name }}</span>
+        <template v-for="items in state.data">
+          <a-menu-item v-if="items.children.length === 0" :key="items.path">
+            <svg
+              class="icon"
+              style="width: 15px; height: 15px"
+              aria-hidden="true"
+            >
+              <use :xlink:href="'#icon' + MenuIcon.get(items.key)"></use>
+            </svg>
+            <span class="menu_text">{{ items.name }}</span>
           </a-menu-item>
-        </a-sub-menu>
+          <a-sub-menu v-else :key="items.path">
+            <template #title>
+              <svg
+                class="icon"
+                style="width: 15px; height: 15px"
+                aria-hidden="true"
+              >
+                <use :xlink:href="'#icon' + MenuIcon.get(items.key)"></use>
+              </svg>
+              <span class="menu_text">{{ items.name }}</span>
+            </template>
+            <a-menu-item v-for="item in items.children" :key="item.path">
+              <svg
+                class="icon"
+                style="width: 15px; height: 15px"
+                aria-hidden="true"
+              >
+                <use :xlink:href="'#icon' + MenuIcon.get(item.key)"></use>
+              </svg>
+              <span class="menu_text">{{ item.name }}</span>
+            </a-menu-item>
+          </a-sub-menu>
+        </template>
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -36,7 +61,7 @@
               type="primary"
               shape="circle"
               size="large"
-              @click="this.$router.push('/setting')"
+              @click="this$router.push('/setting')"
             >
               <template #icon><SettingFilled /></template>
             </a-button>
@@ -55,7 +80,7 @@
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
-        Start Vue 3 ©2020 Created by ikuokuo
+        Start Vue 3 ©2020 Created by JackM
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -65,7 +90,7 @@
 import Logo from "/@/components/Logo.vue";
 import treeData from "/@/treeData";
 import MenuIcon from "/@/static/menuIcon";
-
+import { getCurrentInstance, defineComponent, reactive } from "vue";
 import {
   // menu
   PieChartOutlined,
@@ -78,26 +103,25 @@ import {
   SettingFilled,
 } from "@ant-design/icons-vue";
 
-export default {
-  name: "App",
-  components: {
-    Logo,
-    // icons
-    PieChartOutlined,
-    DesktopOutlined,
-    UserOutlined,
-    TeamOutlined,
-    FileOutlined,
-    HomeFilled,
-    SettingFilled,
+export default defineComponent({
+  setup(props, ctx) {
+    let instance = getCurrentInstance();
+    const state = reactive({
+      data: [],
+      selectedKeys: [],
+    });
+    state.selectedKeys.push("1");
+    console.log(MenuIcon.get("DATACENTER"));
+    state.data = treeData.data;
+    return {
+      state,
+    };
   },
   data() {
     return {
-      data: [],
-      MenuIcon,
       breadcrumb: [],
+      MenuIcon,
       collapsed: false,
-      selectedKeys: ["1"],
     };
   },
   methods: {
@@ -108,8 +132,27 @@ export default {
       }
     },
   },
-  mounted() {
-    this.data = treeData.data;
+  components: {
+    Logo,
+    PieChartOutlined,
+    DesktopOutlined,
+    UserOutlined,
+    TeamOutlined,
+    FileOutlined,
+    HomeFilled,
+    SettingFilled,
   },
-};
+});
 </script>
+<style>
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.menu_text {
+  margin-left: 5px;
+}
+</style>

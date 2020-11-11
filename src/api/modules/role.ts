@@ -24,7 +24,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-05 22:53:38
+ * @LastEditTime: 2020-11-11 23:09:47
  */
 
 import request from '../../utils/request'
@@ -53,7 +53,7 @@ export default {
   },
   systemRole_query(data: any) {
     return request({
-      url: '/systemRole/list?page=' + data.page + '&size=' + data.size + '&keyWord=' + data.keyWord,
+      url: '/systemRole/paging?page=' + data.page + '&size=' + data.size + '&keyWord=' + data.keyWord,
       method: "GET"
     })
   },

@@ -1,0 +1,93 @@
+{
+  "id": "2197787",
+  "name": "machine-geek",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "general code project",
+  "glyphs": [
+    {
+      "icon_id": "7564995",
+      "name": "系统管理",
+      "font_class": "xitongguanli",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "15652761",
+      "name": "大数据中心",
+      "font_class": "dashujuzhongxin",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "554135",
+      "name": "系统设置",
+      "font_class": "xitongshezhi",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "5073229",
+      "name": "工具",
+      "font_class": "kaifazhegongju",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "1237031",
+      "name": "应用监控",
+      "font_class": "yingyongjiankong",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "605457",
+      "name": "代码生成",
+      "font_class": "daimashengcheng",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "1459127",
+      "name": "文档",
+      "font_class": "wendangguanli",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "7177793",
+      "name": "监控概监",
+      "font_class": "shujujiankong",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "7285968",
+      "name": "用户管理",
+      "font_class": "yonghuguanli",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "10149975",
+      "name": "角色管理",
+      "font_class": "jueseguanli",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "15343438",
+      "name": "异常订单处理",
+      "font_class": "yicahngxinxi",
+      "unicode": "ef4f",
+      "unicode_decimal": 61263
+    },
+    {
+      "icon_id": "16942075",
+      "name": "权限",
+      "font_class": "quanxianguanli",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    }
+  ]
+}

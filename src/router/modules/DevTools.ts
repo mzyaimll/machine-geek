@@ -26,7 +26,7 @@
  * @Author: JackM
  * @Date: 2020-11-03 22:10:49
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-03 22:55:04
+ * @LastEditTime: 2020-11-12 00:20:00
  */
 
 export default {
@@ -41,14 +41,24 @@ export default {
             component: () => import("/@/views/DevTools/CodeGenerator.vue"),
         },
         {
-            path: "/DevTools/DataInfo",
+            path: "/DevTools/DataMonitor",
             name: "DataInfo",
-            component: () => import("/@/views/DevTools/DataInfo.vue"),
+            component: () => import("/@/views/DevTools/DataMonitor.vue"),
         },
         {
-            path: "/DevTools/ExceptionInfo",
+            path: "/DevTools/SystemException",
             name: "ExceptionInfo",
-            component: () => import("/@/views/DevTools/ExceptionInfo.vue"),
+            component: () => import("/@/views/DevTools/SystemException.vue"),
+        },
+        {
+            path: "/DevTools/Documentation",
+            name: "Documentation",
+            component: () => import("/@/views/DevTools/Documentation.vue"),
+        },
+        {
+            path: "/DevTools/ApplicationMonitor",
+            name: "ApplicationMonitor",
+            component: () => import("/@/views/DevTools/ApplicationMonitor.vue"),
         },
     ]
 }

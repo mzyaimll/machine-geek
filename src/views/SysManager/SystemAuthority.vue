@@ -21,10 +21,14 @@
  * @Author: JackM
  * @Date: 2020-11-03 22:30:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-05 22:57:06
+ * @LastEditTime: 2020-11-12 00:12:49
  -->
 <template>
-  {{ treeData }}
+  <a-table
+    :columns="columns"
+    :data-source="treeData"
+    :row-selection="rowSelection"
+  />
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
@@ -34,6 +38,8 @@ import { PAGE_SIZE } from "/@/static/config";
 export default defineComponent({
   data() {
     return {
+      columns,
+      rowSelection,
       treeData: [],
     };
   },
@@ -54,6 +60,44 @@ export default defineComponent({
     cancel(key: any) {},
   },
 });
+const rowSelection = {
+  onChange: (selectedRowKeys: any, selectedRows: any) => {
+    console.log(
+      `selectedRowKeys: ${selectedRowKeys}`,
+      "selectedRows: ",
+      selectedRows
+    );
+  },
+  onSelect: (record: any, selected: any, selectedRows: any) => {
+    console.log(record, selected, selectedRows);
+  },
+  onSelectAll: (selected: any, selectedRows: any, changeRows: any) => {
+    console.log(selected, selectedRows, changeRows);
+  },
+};
+
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Key",
+    dataIndex: "key",
+    key: "key",
+  },
+  {
+    title: "Path",
+    dataIndex: "path",
+    key: "path",
+  },
+  {
+    title: "UpdateTime",
+    dataIndex: "updateTime",
+    key: "updateTime",
+  },
+];
 </script>
 <style lang="scss" scoped>
 </style>

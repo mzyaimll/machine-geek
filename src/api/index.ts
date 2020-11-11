@@ -50,7 +50,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-07 09:44:28
+ * @LastEditTime: 2020-11-12 00:31:15
  */
 
 /*
@@ -98,10 +98,14 @@ import user from './modules/user'
 import role from './modules/role'
 import systemAuthority from './modules/authority'
 import common from './modules/common'
+import codeGenerator from './modules/codeGenerator'
+import systemException from './modules/systemException'
 
 export default {
   user,
   systemAuthority,
   common,
   role,
+  codeGenerator,
+  systemException
 }

@@ -1,4 +1,4 @@
-/*
+<!--
  *                        .::::.
  *                      .::::::::.
  *                     :::::::::::
@@ -19,18 +19,10 @@
  *                        '.:::::'                    ':'````..
  * 
  * @Author: JackM
- * @Date: 2020-11-02 22:01:53
+ * @Date: 2020-11-03 22:28:46
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-11 23:19:24
- */
+ * @LastEditTime: 2020-11-12 00:18:41
+ -->
 
-import request from '/@/utils/request'
 
-export default {
-    authority_getTree() {
-        return request<{ data: [], success: boolean }>({
-            url: '/systemAuthority/tree',
-            method: "get",
-        })
-    }
-}
+<template>Documentation</template>
