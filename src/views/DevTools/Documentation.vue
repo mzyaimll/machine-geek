@@ -21,8 +21,18 @@
  * @Author: JackM
  * @Date: 2020-11-03 22:28:46
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-12 00:18:41
+ * @LastEditTime: 2020-11-12 08:55:37
  -->
 
 
-<template>Documentation</template>
+<template>
+  <div style="width: 100vw; height: 1220px">
+    <iframe
+      src="http://nat.machine-geek.cn/doc.html"
+      frameborder="0"
+      scrolling="no"
+      width="100%"
+      height="100%"
+    ></iframe>
+  </div>
+</template>
