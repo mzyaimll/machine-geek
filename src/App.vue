@@ -10,8 +10,7 @@
         <template v-for="items in state.data">
           <a-menu-item v-if="items.children.length === 0" :key="items.path">
             <svg
-              class="icon"
-              style="width: 15px; height: 15px"
+              :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
               aria-hidden="true"
             >
               <use :xlink:href="'#icon' + MenuIcon.get(items.key)"></use>
@@ -21,8 +20,7 @@
           <a-sub-menu v-else :key="items.path">
             <template #title>
               <svg
-                class="icon"
-                style="width: 15px; height: 15px"
+                :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
                 aria-hidden="true"
               >
                 <use :xlink:href="'#icon' + MenuIcon.get(items.key)"></use>
@@ -31,8 +29,7 @@
             </template>
             <a-menu-item v-for="item in items.children" :key="item.path">
               <svg
-                class="icon"
-                style="width: 15px; height: 15px"
+                :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
                 aria-hidden="true"
               >
                 <use :xlink:href="'#icon' + MenuIcon.get(item.key)"></use>
@@ -80,7 +77,7 @@
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
-        Start Vue 3 ©2020 Created by JackM
+        ©2020 Created by JackM
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -104,20 +101,20 @@ import {
 } from "@ant-design/icons-vue";
 
 export default defineComponent({
-  setup(props, ctx) {
+  setup (props, ctx) {
     let instance = getCurrentInstance();
     const state = reactive({
       data: [],
+      menuStyle: "icon menu-collapsed",
       selectedKeys: [],
     });
     state.selectedKeys.push("1");
-    console.log(MenuIcon.get("DATACENTER"));
     state.data = treeData.data;
     return {
       state,
     };
   },
-  data() {
+  data () {
     return {
       breadcrumb: [],
       MenuIcon,
@@ -125,7 +122,7 @@ export default defineComponent({
     };
   },
   methods: {
-    menuClick(e) {
+    menuClick (e) {
       if (e) {
         this.breadcrumb = e.key.slice(1).split("/");
         this.$router.push(e.key);
@@ -154,5 +151,9 @@ export default defineComponent({
 }
 .menu_text {
   margin-left: 5px;
+}
+.menu-collapsed {
+  transition: all ease;
+  margin-right: 40px;
 }
 </style>

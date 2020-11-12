@@ -3,10 +3,12 @@
     <a-col style="flex-grow: 1">
       <a-row class="app-logo" type="flex" align="middle" justify="center">
         <a-col>
-          <img class="logo-icon" :src="logo" />
+          <a-avatar size="large" src="/src/assets/avatar.jpeg" />
+          <!-- <img class="logo-icon" :src="logo" /> -->
         </a-col>
         <a-col>
-          <div v-if="show" class="logo-title ml-2">Start Vue 3</div>
+          <!-- <div v-if="show" class="logo-title ml-2">Start Vue 3</div> -->
+          <div v-if="show" class="logo-title ml-2">月箐丶</div>
         </a-col>
       </a-row>
     </a-col>
@@ -17,12 +19,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, watch } from "vue";
+import { defineComponent, PropType, ref, watch } from 'vue'
 
-import logo from "/@/assets/logo.png";
+import logo from '/@/assets/logo.png'
 
 export default defineComponent({
-  name: "Logo",
+  name: 'Logo',
   props: {
     showTitle: {
       type: Boolean as PropType<boolean>,
@@ -30,25 +32,25 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const showRef = ref<boolean>(!!props.showTitle);
+    const showRef = ref<boolean>(!!props.showTitle)
     watch(
       () => props.showTitle,
       (show: boolean) => {
         if (show) {
           window.setTimeout(() => {
-            showRef.value = show;
-          }, 200);
+            showRef.value = show
+          }, 200)
         } else {
-          showRef.value = show;
+          showRef.value = show
         }
       }
-    );
+    )
     return {
       logo,
       show: showRef,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="scss">
