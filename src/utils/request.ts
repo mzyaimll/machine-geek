@@ -26,7 +26,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-11 23:12:01
+ * @LastEditTime: 2020-11-12 08:18:11
  */
 
 
@@ -50,7 +50,7 @@ service.interceptors.request.use(
       // config.headers['Token'] = lockr.get('Token')
       config.headers['Token'] = "97678a1b-83f5-4092-8d3a-d1c07344c133"
     }
-    config.headers['Token'] = "b301c41d-e855-4b94-96fe-c55e504914b2"
+    config.headers['Token'] = "8fb71460-2746-42be-bbf4-259bf8898949"
     return config
   },
   error => {
