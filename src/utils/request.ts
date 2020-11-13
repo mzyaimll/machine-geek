@@ -26,7 +26,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-12 08:18:11
+ * @LastEditTime: 2020-11-12 23:46:09
  */
 
 
@@ -48,9 +48,9 @@ service.interceptors.request.use(
     let flag = config.headers['Content-Type'] && config.headers['Content-Type'].indexof('application/json')
     if (lockr.get('Token')) {
       // config.headers['Token'] = lockr.get('Token')
-      config.headers['Token'] = "97678a1b-83f5-4092-8d3a-d1c07344c133"
+      config.headers['Token'] = "088487c7-761e-4244-9b6b-6354b493bd01"
     }
-    config.headers['Token'] = "8fb71460-2746-42be-bbf4-259bf8898949"
+    config.headers['Token'] = "088487c7-761e-4244-9b6b-6354b493bd01"
     return config
   },
   error => {
