@@ -21,7 +21,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-11 23:09:39
+ * @LastEditTime: 2020-11-14 19:50:10
  */
 
 import request from '/@/utils/request'
@@ -56,7 +56,7 @@ export default {
   // },
   systemUser_query(data: any) {
     return request({
-      url: '/systemUser/paging?page=' + data.page + '&size=' + data.size,
+      url: '/systemUser/paging?page=' + data.page + '&size=' + data.size + '&keyWord=',
       method: "GET"
     })
   },
