@@ -1,145 +1,52 @@
+<!--
+ *                        ::
+ *                       :;J7, :,                        ::;7:
+ *                       ,ivYi, ,                       ;LLLFS:
+ *                       :iv7Yi                       :7ri;j5PL
+ *                      ,:ivYLvr                    ,ivrrirrY2X,
+ *                      :;r@Wwz.7r:                :ivu@kexianli.
+ *                     :iL7::,:::iiirii:ii;::::,,irvF7rvvLujL7ur
+ *                    ri::,:,::i:iiiiiii:i:irrv177JX7rYXqZEkvv17
+ *                 ;i:, , ::::iirrririi:i:::iiir2XXvii;L8OGJr71i
+ *               :,, ,,:   ,::ir@mingyi.irii:i:::j1jri7ZBOS7ivv,
+ *                  ,::,    ::rv77iiiriii:iii:i::,rvLq@huhao.Li
+ *              ,,      ,, ,:ir7ir::,:::i;ir:::i:i::rSGGYri712:
+ *            :::  ,v7r:: ::rrv77:, ,, ,:i7rrii:::::, ir7ri7Lri
+ *           ,     2OBBOi,iiir;r::        ,irriiii::,, ,iv7Luur:
+ *         ,,     i78MBBi,:,:::,:,  :7FSL: ,iriii:::i::,,:rLqXv::
+ *         :      iuMMP: :,:::,:ii;2GY7OBB0viiii:i:iii:i:::iJqL;::
+ *        ,     ::::i   ,,,,, ::LuBBu BBBBBErii:i:i:i:i:i:i:r77ii
+ *       ,       :       , ,,:::rruBZ1MBBqi, :,,,:::,::::::iiriri:
+ *      ,               ,,,,::::i:  @arqiao.       ,:,, ,:::ii;i7:
+ *     :,       rjujLYLi   ,,:::::,:::::::::,,   ,:i,:,,,,,::i:iii
+ *     ::      BBBBBBBBB0,    ,,::: , ,:::::: ,      ,,,, ,,:::::::
+ *     i,  ,  ,8BMMBBBBBBi     ,,:,,     ,,, , ,   , , , :,::ii::i::
+ *     :      iZMOMOMBBM2::::::::::,,,,     ,,,,,,:,,,::::i:irr:i:::,
+ *     i   ,,:;u0MBMOG1L:::i::::::  ,,,::,   ,,, ::::::i:i:iirii:i:i:
+ *     :    ,iuUuuXUkFu7i:iii:i:::, :,:,: ::::::::i:i:::::iirr7iiri::
+ *     :     :rk@Yizero.i:::::, ,:ii:::::::i:::::i::,::::iirrriiiri::,
+ *      :      5BMBBBBBBSr:,::rv2kuii:::iii::,:i:,, , ,,:,:i@petermu.,
+ *           , :r50EZ8MBBBBGOBBBZP7::::i::,:::::,: :,:,::i;rrririiii::
+ *               :jujYY7LS0ujJL7r::,::i::,::::::::::::::iirirrrrrrr:ii:
+ *            ,:  :@kevensun.:,:,,,::::i:i:::::,,::::::iir;ii;7v77;ii;i,
+ *            ,,,     ,,:,::::::i:iiiii:i::::,, ::::iiiir@xingjief.r;7:i,
+ *         , , ,,,:,,::::::::iiiiiiiiii:,:,:::::::::iiir;ri7vL77rrirri::
+ *          :,, , ::::::::i:::i:::i:i::,,,,,:,::i:i:::iir;@Secbone.ii:::
+ * 
+ * @Author: JackM
+ * @Date: 2020-11-12 18:45:33
+ * @LastEditors: JackM
+ * @LastEditTime: 2020-11-14 20:08:47
+ -->
+
 <template>
-  <a-layout id="app" style="min-height: 100vh">
-    <a-layout-sider v-model:collapsed="collapsed" theme="light" collapsible>
-      <Logo :show-title="!collapsed" />
-      <a-menu
-        @click="menuClick"
-        v-model:selectedKeys="state.selectedKeys"
-        mode="inline"
-      >
-        <template v-for="items in state.data">
-          <a-menu-item v-if="items.children.length === 0" :key="items.path">
-            <svg
-              :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
-              aria-hidden="true"
-            >
-              <use :xlink:href="'#icon' + MenuIcon.get(items.key)"></use>
-            </svg>
-            <span class="menu_text">{{ items.name }}</span>
-          </a-menu-item>
-          <a-sub-menu v-else :key="items.path">
-            <template #title>
-              <svg
-                :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
-                aria-hidden="true"
-              >
-                <use :xlink:href="'#icon' + MenuIcon.get(items.key)"></use>
-              </svg>
-              <span class="menu_text">{{ items.name }}</span>
-            </template>
-            <a-menu-item v-for="item in items.children" :key="item.path">
-              <svg
-                :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
-                aria-hidden="true"
-              >
-                <use :xlink:href="'#icon' + MenuIcon.get(item.key)"></use>
-              </svg>
-              <span class="menu_text">{{ item.name }}</span>
-            </a-menu-item>
-          </a-sub-menu>
-        </template>
-      </a-menu>
-    </a-layout-sider>
-    <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
-        <a-row type="flex" justify="end">
-          <a-col class="mr-3">
-            <a-button
-              type="primary"
-              shape="circle"
-              size="large"
-              @click="this.$router.push('/')"
-            >
-              <template #icon><HomeFilled /></template>
-            </a-button>
-          </a-col>
-          <a-col class="mr-3">
-            <a-button
-              type="primary"
-              shape="circle"
-              size="large"
-              @click="this$router.push('/setting')"
-            >
-              <template #icon><SettingFilled /></template>
-            </a-button>
-          </a-col>
-        </a-row>
-      </a-layout-header>
-      <a-layout-content style="margin: 0 16px">
-        <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>{{ breadcrumb[0] }}</a-breadcrumb-item>
-          <a-breadcrumb-item>{{ breadcrumb[1] }}</a-breadcrumb-item>
-        </a-breadcrumb>
-        <div
-          :style="{ padding: '24px', background: '#fff', minHeight: '360px' }"
-        >
-          <router-view />
-        </div>
-      </a-layout-content>
-      <a-layout-footer style="text-align: center">
-        ©2020 Created by JackM
-      </a-layout-footer>
-    </a-layout>
-  </a-layout>
+  <router-view></router-view>
 </template>
 
 <script>
-import Logo from "/@/components/Logo.vue";
-import treeData from "/@/treeData";
-import MenuIcon from "/@/static/menuIcon";
-import { getCurrentInstance, defineComponent, reactive } from "vue";
-import {
-  // menu
-  PieChartOutlined,
-  DesktopOutlined,
-  UserOutlined,
-  TeamOutlined,
-  FileOutlined,
-  // header
-  HomeFilled,
-  SettingFilled,
-} from "@ant-design/icons-vue";
+import { defineComponent } from "vue";
 
-export default defineComponent({
-  setup (props, ctx) {
-    let instance = getCurrentInstance();
-    const state = reactive({
-      data: [],
-      menuStyle: "icon menu-collapsed",
-      selectedKeys: [],
-    });
-    state.selectedKeys.push("1");
-    state.data = treeData.data;
-    return {
-      state,
-    };
-  },
-  data () {
-    return {
-      breadcrumb: [],
-      MenuIcon,
-      collapsed: false,
-    };
-  },
-  methods: {
-    menuClick (e) {
-      if (e) {
-        this.breadcrumb = e.key.slice(1).split("/");
-        this.$router.push(e.key);
-      }
-    },
-  },
-  components: {
-    Logo,
-    PieChartOutlined,
-    DesktopOutlined,
-    UserOutlined,
-    TeamOutlined,
-    FileOutlined,
-    HomeFilled,
-    SettingFilled,
-  },
-});
+export default defineComponent({});
 </script>
 <style>
 .icon {

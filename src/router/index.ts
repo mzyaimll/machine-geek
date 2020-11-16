@@ -36,7 +36,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-03 22:26:32
+ * @LastEditTime: 2020-11-14 20:05:43
  */
 
 import { createRouter, createWebHistory } from "vue-router";
@@ -44,6 +44,11 @@ import { DataCenter, DevTools, SysManager, SysConfig } from "./modules"
 const routes = [
   {
     path: "/",
+    name: "Login",
+    component: () => import("/@/views/Login/index.vue"),
+  },
+  {
+    path: "/Home",
     name: "Home",
     component: () => import("/@/views/Home.vue"),
   },
@@ -59,6 +64,6 @@ const routes = [
 ];
 
 export default createRouter({
-  history: createWebHistory("/start-vue3/"),
+  history: createWebHistory("/"),
   routes,
 });
