@@ -6,6 +6,13 @@
   "description": "general code project",
   "glyphs": [
     {
+      "icon_id": "10562630",
+      "name": "G, google. logo",
+      "font_class": "loginlogo",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
       "icon_id": "7564995",
       "name": "系统管理",
       "font_class": "xitongguanli",

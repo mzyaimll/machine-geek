@@ -23,7 +23,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-09 19:24:27
+ * @LastEditTime: 2020-11-17 08:01:00
  */
 
 import request from '/@/utils/request'
@@ -35,6 +35,8 @@ export default {
    * @param data 
    */
   system_login(data: any) {
+    console.log('system_login', data);
+
     return request({
       url: '/login',
       method: "POST",
