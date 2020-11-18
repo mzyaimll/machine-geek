@@ -17,7 +17,7 @@
  * @Author: JackM
  * @Date: 2020-11-14 19:34:32
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-17 19:16:38
+ * @LastEditTime: 2020-11-18 19:16:10
  -->
 
 <template>
@@ -69,14 +69,13 @@
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
 import api from "/@/api/index";
-// import md5 from "js-md5";
 
 export default {
   setup() {
     const state = reactive({
       ruleForm: {
-        username: "",
-        password: "",
+        username: "admin",
+        password: "E10ADC3949BA59ABBE56E057F20F883E",
       },
       layout: {
         labelCol: { span: 4 },
@@ -90,7 +89,6 @@ export default {
       };
     }
     function submit(values: any) {
-      // console.log("md5_password", md5(values));
       console.log("submit", values);
     }
     function submitFailed(errors: any) {
