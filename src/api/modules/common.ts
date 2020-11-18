@@ -23,11 +23,10 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-17 08:01:00
+ * @LastEditTime: 2020-11-18 21:18:02
  */
 
 import request from '/@/utils/request'
-// import Qs from 'qs'
 
 export default {
   /**
@@ -36,7 +35,6 @@ export default {
    */
   system_login(data: any) {
     console.log('system_login', data);
-
     return request({
       url: '/login',
       method: "POST",

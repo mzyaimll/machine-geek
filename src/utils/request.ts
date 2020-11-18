@@ -26,7 +26,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-14 19:32:18
+ * @LastEditTime: 2020-11-18 21:30:11
  */
 
 
@@ -45,12 +45,10 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
-    let flag = config.headers['Content-Type'] && config.headers['Content-Type'].indexof('application/json')
+    config.headers['Content-Type'] = 'application/json'
     if (lockr.get('Token')) {
-      // config.headers['Token'] = lockr.get('Token')
-      config.headers['Token'] = "088487c7-761e-4244-9b6b-6354b493bd01"
+      config.headers['Token'] = lockr.get('Token')
     }
-    config.headers['Token'] = "54c121b7-face-41cd-ab5d-e6d38b1e664f"
     return config
   },
   error => {

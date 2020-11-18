@@ -17,7 +17,7 @@
  * @Author: JackM
  * @Date: 2020-11-14 19:34:32
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-18 19:16:10
+ * @LastEditTime: 2020-11-18 21:35:19
  -->
 
 <template>
@@ -51,9 +51,7 @@
                 />
               </a-form-item>
               <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-                <a-button type="primary" html-type="submit" @click="submit(e)">
-                  Submit
-                </a-button>
+                <a-button type="primary" html-type="submit"> Submit </a-button>
                 <a-button style="margin-left: 10px" @click="resetForm">
                   Reset
                 </a-button>
@@ -66,16 +64,19 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, reactive } from "vue";
 import api from "/@/api/index";
+import lockr from "/@/utils/lockr";
+import { message } from "ant-design-vue";
+import md5 from "/@/utils/md5";
 
-export default {
+export default defineComponent({
   setup() {
     const state = reactive({
       ruleForm: {
         username: "admin",
-        password: "E10ADC3949BA59ABBE56E057F20F883E",
+        password: "123456",
       },
       layout: {
         labelCol: { span: 4 },
@@ -88,20 +89,32 @@ export default {
         password: "",
       };
     }
-    function submit(values: any) {
-      console.log("submit", values);
-    }
-    function submitFailed(errors: any) {
-      console.log("submitFailed", errors);
-    }
+
     return {
       state,
       resetForm,
-      submit,
-      submitFailed,
     };
   },
-};
+  methods: {
+    submit(values) {
+      let data = {
+        username: values.username,
+        password: md5(values.password).toUpperCase(),
+      };
+      api.common.system_login(data).then((res) => {
+        if (res.success) {
+          lockr.set("Token", res.data.accessToken);
+          lockr.set("refreshToken", res.data.refreshToken);
+          this.$router.push("/Home");
+          message.info("登陆成功");
+        }
+      });
+    },
+    submitFailed(errors) {
+      console.log("submitFailed", errors);
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>

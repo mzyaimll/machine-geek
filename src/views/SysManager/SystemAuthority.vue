@@ -21,13 +21,14 @@
  * @Author: JackM
  * @Date: 2020-11-03 22:30:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-12 00:12:49
+ * @LastEditTime: 2020-11-18 21:40:59
  -->
 <template>
   <a-table
     :columns="columns"
     :data-source="treeData"
     :row-selection="rowSelection"
+    :row-key="(record) => record.id"
   />
 </template>
 <script lang="ts">

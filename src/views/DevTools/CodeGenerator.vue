@@ -21,7 +21,7 @@
  * @Author: JackM
  * @Date: 2020-11-03 22:28:46
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-12 08:38:11
+ * @LastEditTime: 2020-11-18 21:41:13
  -->
 
 
@@ -30,6 +30,7 @@
     :columns="columns"
     :data-source="state.sourceData"
     :row-selection="rowSelection"
+    :row-key="(record) => record.id"
   />
 </template>
 <script lang="ts">

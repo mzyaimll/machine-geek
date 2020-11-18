@@ -36,7 +36,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-14 20:05:43
+ * @LastEditTime: 2020-11-18 21:36:34
  */
 
 import { createRouter, createWebHistory } from "vue-router";
@@ -51,16 +51,19 @@ const routes = [
     path: "/Home",
     name: "Home",
     component: () => import("/@/views/Home.vue"),
+    children: [
+      DataCenter,
+      DevTools,
+      SysConfig,
+      SysManager,
+      {
+        path: "/setting",
+        name: "Setting",
+        component: () => import("/@/views/Setting.vue"),
+      },
+    ]
   },
-  {
-    path: "/setting",
-    name: "Setting",
-    component: () => import("/@/views/Setting.vue"),
-  },
-  DataCenter,
-  DevTools,
-  SysConfig,
-  SysManager,
+
 ];
 
 export default createRouter({
