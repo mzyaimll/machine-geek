@@ -24,7 +24,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-05 21:37:51
+ * @LastEditTime: 2020-11-19 00:40:15
  */
 
 import { resolve } from "path";
@@ -41,7 +41,7 @@ module.exports = {
     include: ["@ant-design/icons-vue"],
   },
   // otherwise, may assets 404 or visit with index.html
-  base: "/machine-admin/",
+  base: "",
   assetsDir: "",
   proxy: {
     '/api': {

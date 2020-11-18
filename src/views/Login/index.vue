@@ -17,7 +17,7 @@
  * @Author: JackM
  * @Date: 2020-11-14 19:34:32
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-18 21:35:19
+ * @LastEditTime: 2020-11-19 00:33:32
  -->
 
 <template>
@@ -75,8 +75,8 @@ export default defineComponent({
   setup() {
     const state = reactive({
       ruleForm: {
-        username: "admin",
-        password: "123456",
+        username: "",
+        password: "",
       },
       layout: {
         labelCol: { span: 4 },
@@ -121,7 +121,7 @@ export default defineComponent({
 .login_body {
   width: 100vw;
   height: 100vh;
-  background-image: url("/@/assets/bg.jpeg");
+  background-image: url("/src/assets/bg.jpeg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   min-width: 1220px;
