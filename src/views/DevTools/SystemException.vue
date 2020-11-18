@@ -21,7 +21,7 @@
  * @Author: JackM
  * @Date: 2020-11-03 22:28:46
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-18 21:41:06
+ * @LastEditTime: 2020-11-18 23:43:47
  -->
 
 
@@ -46,10 +46,9 @@ export default defineComponent({
       },
     });
     function fetch(params = state.paginate) {
-      api.systemException.systemException_paging(params).then((res) => {
+      api.systemException.systemException_paging(params).then((res: any) => {
         if (res.success) {
-          console.log(res);
-          //   state.sourceData = res.data.records;
+          state.sourceData = res.data.records;
         }
       });
     }
@@ -58,11 +57,6 @@ export default defineComponent({
       state,
       rowSelection,
       fetch,
-    };
-  },
-  data() {
-    return {
-      sourceData: [],
       columns,
     };
   },
@@ -102,6 +96,21 @@ const columns = [
     title: "请求参数",
     dataIndex: "parameter",
     key: "parameter",
+  },
+  {
+    title: "IP",
+    dataIndex: "ip",
+    key: "ip",
+  },
+  {
+    title: "exceptionClass",
+    dataIndex: "exceptionClass",
+    key: "exceptionClass",
+  },
+  {
+    title: "exceptionMessage",
+    dataIndex: "exceptionMessage",
+    key: "exceptionMessage",
   },
   {
     title: "创建时间",
