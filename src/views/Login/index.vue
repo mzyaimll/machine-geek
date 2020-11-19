@@ -17,7 +17,7 @@
  * @Author: JackM
  * @Date: 2020-11-14 19:34:32
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-19 00:33:32
+ * @LastEditTime: 2020-11-19 23:34:17
  -->
 
 <template>
@@ -97,18 +97,19 @@ export default defineComponent({
   },
   methods: {
     submit(values) {
-      let data = {
-        username: values.username,
-        password: md5(values.password).toUpperCase(),
-      };
-      api.common.system_login(data).then((res) => {
-        if (res.success) {
-          lockr.set("Token", res.data.accessToken);
-          lockr.set("refreshToken", res.data.refreshToken);
-          this.$router.push("/Home");
-          message.info("登陆成功");
-        }
-      });
+      // let data = {
+      //   username: values.username,
+      //   password: md5(values.password).toUpperCase(),
+      // };
+      // api.common.system_login(data).then((res) => {
+      //   if (res.success) {
+      //     lockr.set("Token", res.data.accessToken);
+      //     lockr.set("refreshToken", res.data.refreshToken);
+      //     this.$router.push("/Home");
+      //     message.info("登陆成功");
+      //   }
+      // });
+      this.$router.push("/Home");
     },
     submitFailed(errors) {
       console.log("submitFailed", errors);
