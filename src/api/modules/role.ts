@@ -24,7 +24,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-11 23:09:47
+ * @LastEditTime: 2020-11-23 19:35:32
  */
 
 import request from '../../utils/request'
@@ -57,10 +57,17 @@ export default {
       method: "GET"
     })
   },
-  systemRole_getById(id: any) {
+  systemRole_getById(id: Number) {
     return request({
       url: '/systemRole/getById?id=' + id,
       method: "GET"
     })
-  }
+  },
+  systemRole_addWithAuthority(data: any) {
+    return request({
+      url: '/systemRole/addWithAuthority',
+      method: "POST",
+      data: data
+    })
+  },
 }

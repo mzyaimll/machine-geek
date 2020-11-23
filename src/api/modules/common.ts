@@ -23,7 +23,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-18 21:18:02
+ * @LastEditTime: 2020-11-23 19:37:14
  */
 
 import request from '/@/utils/request'
@@ -43,8 +43,15 @@ export default {
   },
   system_refreshToken() {
     return request({
-      url: '/refreshToken',
+      url: '/api/token/refreshToken',
       method: "GET"
+    })
+  },
+  system_getGraphCaptcha(key: string) {
+    return request({
+      url: '/api/catpcha/getGraphCaptcha',
+      method: "GET",
+      data: { key: key, _method: "GET" }
     })
   }
 }

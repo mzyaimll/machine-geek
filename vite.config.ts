@@ -24,7 +24,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-19 00:40:15
+ * @LastEditTime: 2020-11-23 19:16:24
  */
 
 import { resolve } from "path";
@@ -45,7 +45,7 @@ module.exports = {
   assetsDir: "",
   proxy: {
     '/api': {
-      target: 'http://nat.machine-geek.cn/',
+      target: 'http://q7846z.natappfree.cc',
       changeOrigin: true,
       rewrite: path => path.replace(/^\/api/, '')
     }

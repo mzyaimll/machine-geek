@@ -50,7 +50,7 @@
  * @Author: JackM
  * @Date: 2020-11-02 22:01:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-12 00:31:15
+ * @LastEditTime: 2020-11-23 19:38:13
  */
 
 /*
@@ -99,7 +99,9 @@ import role from './modules/role'
 import systemAuthority from './modules/authority'
 import common from './modules/common'
 import codeGenerator from './modules/codeGenerator'
-import systemException from './modules/systemException'
+import systemException from './modules/exception'
+import systemDictionary from './modules/dictionary'
+import systemFile from './modules/file'
 
 export default {
   user,
@@ -107,5 +109,7 @@ export default {
   common,
   role,
   codeGenerator,
-  systemException
+  systemException,
+  systemDictionary,
+  systemFile
 }
