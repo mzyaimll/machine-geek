@@ -21,7 +21,7 @@
  * @Author: JackM
  * @Date: 2020-11-03 22:30:53
  * @LastEditors: JackM
- * @LastEditTime: 2020-11-28 23:16:15
+ * @LastEditTime: 2020-11-29 12:58:45
  -->
 <template>
   <a-table
@@ -61,7 +61,7 @@
             v-bind="editingKey !== '' ? { disabled: 'disabled' } : {}"
             @click="edit(record.key)"
           >
-            Edit111
+            Edit1112222
           </a>
         </span>
       </div>
