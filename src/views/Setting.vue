@@ -55,20 +55,23 @@
 
 <template>
   <div>
-    <h1>This is a setting page yes this is a setting page</h1>
+    <h1>
+      This is a setting page yes this is a setting page of course it is my
+      project
+    </h1>
     <p>store count is: {{ count }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: "Setting",
+  name: 'Setting',
   computed: {
     count() {
-      return this.$store.state.count;
+      return this.$store.state.count
     },
   },
-});
+})
 </script>
