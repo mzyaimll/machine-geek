@@ -57,7 +57,7 @@
   <div>
     <h1>
       This is a setting page yes this is a setting page of course it is my
-      project
+      project324567890
     </h1>
     <p>store count is: {{ count }}</p>
   </div>
