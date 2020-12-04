@@ -55,7 +55,7 @@
 
 <template>
   <div>
-    <h1>This is a setting page yes this is a setting page</h1>
+    <h1>This is a setting page</h1>
     <p>store count is: {{ count }}</p>
   </div>
 </template>
