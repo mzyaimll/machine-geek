@@ -15,4 +15,4 @@
  * @LastEditTime: 2020-11-03 22:03:01
  -->
 
-<template>sysconfig这是一个小界面</template>
+<template>sysconfig</template>
