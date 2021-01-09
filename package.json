@@ -2,8 +2,10 @@
   "name": "my-site",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "NODE_ENV=development vite",
+    "build-dev": "NODE_ENV=development vite build",
+    "build-prd": "NODE_ENV=production vite build",
+    "lint": "lint-staged ."
   },
   "dependencies": {
     "@ant-design/colors": "^4.0.5",

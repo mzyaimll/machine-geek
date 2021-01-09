@@ -72,7 +72,7 @@ import { message } from "ant-design-vue";
 import md5 from "/@/utils/md5";
 
 export default defineComponent({
-  setup() {
+  setup () {
     const state = reactive({
       ruleForm: {
         username: "",
@@ -83,7 +83,7 @@ export default defineComponent({
         wrapperCol: { span: 14 },
       },
     });
-    function resetForm() {
+    function resetForm () {
       state.ruleForm = {
         username: "",
         password: "",
@@ -96,21 +96,22 @@ export default defineComponent({
     };
   },
   methods: {
-    submit(values) {
+    submit (values) {
       let data = {
         username: values.username,
         password: md5(values.password).toUpperCase(),
       };
-      api.common.system_login(data).then((res) => {
-        if (res.success) {
-          lockr.set("Token", res.data.accessToken);
-          lockr.set("refreshToken", res.data.refreshToken);
-          this.$router.push("/Home");
-          message.info("登陆成功");
-        }
-      });
+      // api.common.system_login(data).then((res) => {
+      //   if (res.success) {
+      //     lockr.set("Token", res.data.accessToken);
+      //     lockr.set("refreshToken", res.data.refreshToken);
+      //     this.$router.push("/Home");
+      //     message.info("登陆成功");
+      //   }
+      // });
+      this.$router.push("/Home");
     },
-    submitFailed(errors) {
+    submitFailed (errors) {
       console.log("submitFailed", errors);
     },
   },
@@ -121,7 +122,7 @@ export default defineComponent({
 .login_body {
   width: 100vw;
   height: 100vh;
-  background-image: url("/src/assets/bg.jpeg");
+  background-image: url('/src/assets/bg.jpeg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   min-width: 1220px;

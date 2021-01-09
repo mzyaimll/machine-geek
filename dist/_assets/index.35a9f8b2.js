@@ -1,0 +1,1 @@
+let n=document.createElement("style");n.innerHTML="",document.head.appendChild(n);function t(c,r){return"sysconfig 123213123"}const e={};e.render=t,e.__file="src/views/SysConfig/index.vue";export default e;

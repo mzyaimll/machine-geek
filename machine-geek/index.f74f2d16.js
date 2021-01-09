@@ -1,1 +1,0 @@
-let e=document.createElement("style");e.innerHTML="",document.head.appendChild(e);import{o as n,c as t,g as o}from"./index.84ff1683.js";const r={render:function(e,r){const s=o("router-view");return n(),t(s)},__file:"src/views/DevTools/index.vue"};export default r;
