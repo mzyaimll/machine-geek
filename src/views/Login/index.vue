@@ -101,15 +101,15 @@ export default defineComponent({
         username: values.username,
         password: md5(values.password).toUpperCase(),
       };
-      // api.common.system_login(data).then((res) => {
-      //   if (res.success) {
-      //     lockr.set("Token", res.data.accessToken);
-      //     lockr.set("refreshToken", res.data.refreshToken);
-      //     this.$router.push("/Home");
-      //     message.info("登陆成功");
-      //   }
-      // });
-      this.$router.push("/Home");
+      console.log(data.password);
+      api.common.system_login(data).then((res) => {
+        if (res.success) {
+          lockr.set("Token", res.data.accessToken);
+          lockr.set("refreshToken", res.data.refreshToken);
+          this.$router.push("/Home");
+          message.info("登陆成功");
+        }
+      });
     },
     submitFailed (errors) {
       console.log("submitFailed", errors);

@@ -1,49 +1,54 @@
 /*
- *                        .::::.
- *                      .::::::::.
- *                     :::::::::::
- *                  ..:::::::::::'
- *               '::::::::::::'
- *                 .::::::::::
- *            '::::::::::::::..
- *                 ..::::::::::::.
- *               ``::::::::::::::::
- *                ::::``:::::::::'        .:::.
- *               ::::'   ':::::'       .::::::::.
- *             .::::'      ::::     .:::::::'::::.
- *            .:::'       :::::  .:::::::::' ':::::.
- *           .::'        :::::.:::::::::'      ':::::.
- *          .::'         ::::::::::::::'         ``::::.
- *      ...:::           ::::::::::::'              ``::.
- *     ````':.          ':::::::::'                  ::::..
- *                        '.:::::'                    ':'````..
- * 
- * @Author: JackM
- * @Date: 2020-11-02 22:01:53
- * @LastEditors: JackM
- * @LastEditTime: 2020-11-23 19:19:23
+ * @Author: GeekMzy
+ * @LastEditors: GeekMzy
+ * @Date: 2021-01-07 20:29:41
+ * @LastEditTime: 2021-01-11 13:07:54
+ * @Email: GeekMzy@out-look.com
+ * @FilePath: /machine-geek/src/api/modules/authority.ts
+ * @Environment: big sur Js
+ * @Description: 
  */
 
 import request from '/@/utils/request'
 
 export default {
-    authority_getTree() {
+    authority_tree() {
         return request<{ data: [], success: boolean }>({
-            url: '/systemAuthority/tree',
+            url: '/authority/tree',
             method: "get",
         })
     },
-    authority_getById(id: Number) {
+    authority_get(id: Number) {
         return request({
-            url: '/systemAuthority/getById?id=' + id,
+            url: '/authority/getById?id=' + id,
             method: "get",
         })
     },
-    authority_modifyById(data: any) {
+    authority_modify(data: any) {
         return request({
-            url: '/systemAuthority/modifyById',
+            url: '/authority/modifyById',
             method: "POST",
             data: data
+        })
+    },
+    authority_add(data: any) {
+        return request<{ success: boolean }>({
+            url: '/authority/add',
+            method: "POST",
+            data: data
+        })
+    },
+    authority_paging(data: any) {
+        return request({
+            url: '/authority/paging?page=' + data.page + '&size=' + data.size + '&keyWord=',
+            method: "GET"
+        })
+    },
+    authority_delete(id: number) {
+        return request({
+            url: '/authority/deleteById',
+            method: "POST",
+            data: { id: id, _method: "DELETE" }
         })
     },
 }

@@ -31,95 +31,58 @@
     :loading="loading"
     bordered
   >
-    <template
-      v-for="col in ['nickname', 'description', 'email', 'phone']"
-      v-slot:[col]="{ text, record }"
-      :key="col"
-    >
-      <div>
-        <a-input
-          v-if="record.editable"
-          style="margin: -5px 0"
-          :value="text"
-          @change="(e) => handleChange(e.target.value, record.key, col)"
-        />
-        <template v-else>
-          {{ text }}
-        </template>
-      </div>
-    </template>
-    <template v-slot:operation="{ record }">
-      <div class="editable-row-operations">
-        <span v-if="record.editable">
-          <a @click="save(record.key)">Save</a>
-          <a-popconfirm title="Sure to cancel?" @confirm="cancel(record.key)">
-            <a>Cancel</a>
-          </a-popconfirm>
-        </span>
-        <span v-else>
-          <a
-            v-bind="editingKey !== '' ? { disabled: 'disabled' } : {}"
-            @click="edit(record.key)"
-          >
-            Edit1112222
-          </a>
-        </span>
-      </div>
+    <template #enable="{ record }">
+      <span v-if="record === true">可用</span>
+      <span v-else>不可用</span>
     </template>
   </a-table>
 </template>
 <script lang="ts">
 const columns = [
   {
-    title: "id",
-    dataIndex: "id",
-    width: "10%",
+    title: 'id',
+    dataIndex: 'id',
+    width: '10%',
   },
   {
-    title: "nickname",
-    dataIndex: "nickname",
-    width: "15%",
-    slots: { customRender: "nickname" },
+    title: 'name',
+    dataIndex: 'name',
+    width: '15%',
   },
   {
-    title: "description",
-    dataIndex: "description",
-    width: "15%",
-    slots: { customRender: "description" },
+    title: 'enable',
+    dataIndex: 'enable',
+    width: '15%',
+    slots: { customRender: 'enable' },
   },
   {
-    title: "email",
-    dataIndex: "email",
-    width: "15%",
-    slots: { customRender: "email" },
+    title: 'version',
+    dataIndex: 'version',
+    width: '15%',
   },
   {
-    title: "phone",
-    dataIndex: "phone",
-    width: "15%",
-    slots: { customRender: "phone" },
+    title: 'ip',
+    dataIndex: 'ip',
+    width: '10%',
   },
   {
-    title: "ip",
-    dataIndex: "ip",
-    width: "10%",
-    slots: { customRender: "ip" },
+    title: 'lastLogin',
+    dataIndex: 'lastLogin',
+    width: '20%',
   },
   {
-    title: "lastLogin",
-    dataIndex: "lastLogin",
-    width: "20%",
-    slots: { customRender: "lastLogin" },
+    title: 'createTime',
+    dataIndex: 'createTime',
+    width: '20%',
   },
   {
-    title: "operation",
-    dataIndex: "operation",
-    slots: { customRender: "operation" },
+    title: 'updateTime',
+    dataIndex: 'operation',
   },
-];
-import { defineComponent } from "vue";
-import api from "/@/api/index";
-import { PAGE_SIZE } from "/@/static/config";
+]
+import { defineComponent } from 'vue'
+import api from '/@/api/index'
+import { PAGE_SIZE } from '/@/static/config'
 
 export default defineComponent({
   data() {
@@ -127,34 +90,34 @@ export default defineComponent({
       sourceData: [],
       columns,
       loading: false,
-      editingKey: "",
+      editingKey: '',
       paginate: {
         size: PAGE_SIZE,
         page: 1,
         total: 0,
-        keyWord: "",
+        keyWord: '',
       },
-    };
+    }
   },
   mounted() {
-    this.fetch(this.paginate);
+    this.fetch(this.paginate)
   },
   methods: {
     fetch(param: any) {
-      this.loading = true;
-      api.user.systemUser_query(param).then((res) => {
+      this.loading = true
+      api.user.account_paging(param).then((res) => {
         if (res.success) {
-          this.sourceData = res.data.records;
-          this.loading = false;
+          this.sourceData = res.data.records
+          this.loading = false
         }
-      });
+      })
     },
     handleChange(value: any, key: any, column: string | number) {},
     edit(key: string) {},
     save(key: any) {},
     cancel(key: any) {},
   },
-});
+})
 </script>
 <style lang="scss" scoped>
 </style>

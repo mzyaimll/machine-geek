@@ -32,9 +32,9 @@
   />
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
-import api from "/@/api/index";
-import { PAGE_SIZE } from "/@/static/config";
+import { defineComponent } from 'vue'
+import api from '/@/api/index'
+import { PAGE_SIZE } from '/@/static/config'
 
 export default defineComponent({
   data() {
@@ -42,63 +42,63 @@ export default defineComponent({
       columns,
       rowSelection,
       treeData: [],
-    };
+    }
   },
   mounted() {
-    this.fetch();
+    this.fetch()
   },
   methods: {
     fetch() {
-      api.systemAuthority.authority_getTree().then((res) => {
+      api.systemAuthority.authority_tree().then((res) => {
         if (res.success) {
-          this.treeData = res.data;
+          this.treeData = res.data
         }
-      });
+      })
     },
     handleChange(value: any, key: any, column: string | number) {},
     edit(key: string) {},
     save(key: any) {},
     cancel(key: any) {},
   },
-});
+})
 const rowSelection = {
   onChange: (selectedRowKeys: any, selectedRows: any) => {
     console.log(
       `selectedRowKeys: ${selectedRowKeys}`,
-      "selectedRows: ",
+      'selectedRows: ',
       selectedRows
-    );
+    )
   },
   onSelect: (record: any, selected: any, selectedRows: any) => {
-    console.log(record, selected, selectedRows);
+    console.log(record, selected, selectedRows)
   },
   onSelectAll: (selected: any, selectedRows: any, changeRows: any) => {
-    console.log(selected, selectedRows, changeRows);
+    console.log(selected, selectedRows, changeRows)
   },
-};
+}
 
 const columns = [
   {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
   },
   {
-    title: "Key",
-    dataIndex: "key",
-    key: "key",
+    title: 'Key',
+    dataIndex: 'key',
+    key: 'key',
   },
   {
-    title: "Path",
-    dataIndex: "path",
-    key: "path",
+    title: 'Path',
+    dataIndex: 'path',
+    key: 'path',
   },
   {
-    title: "UpdateTime",
-    dataIndex: "updateTime",
-    key: "updateTime",
+    title: 'UpdateTime',
+    dataIndex: 'updateTime',
+    key: 'updateTime',
   },
-];
+]
 </script>
 <style lang="scss" scoped>
 </style>

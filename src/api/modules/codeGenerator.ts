@@ -1,41 +1,26 @@
 /*
- *                        .::::.
- *                      .::::::::.
- *                     :::::::::::
- *                  ..:::::::::::'
- *               '::::::::::::'
- *                 .::::::::::
- *            '::::::::::::::..
- *                 ..::::::::::::.
- *               ``::::::::::::::::
- *                ::::``:::::::::'        .:::.
- *               ::::'   ':::::'       .::::::::.
- *             .::::'      ::::     .:::::::'::::.
- *            .:::'       :::::  .:::::::::' ':::::.
- *           .::'        :::::.:::::::::'      ':::::.
- *          .::'         ::::::::::::::'         ``::::.
- *      ...:::           ::::::::::::'              ``::.
- *     ````':.          ':::::::::'                  ::::..
- *                        '.:::::'                    ':'````..
- * 
- * @Author: JackM
- * @Date: 2020-11-02 22:01:53
- * @LastEditors: JackM
- * @LastEditTime: 2020-11-12 08:39:07
+ * @Author: GeekMzy
+ * @LastEditors: GeekMzy
+ * @Date: 2021-01-07 20:29:41
+ * @LastEditTime: 2021-01-11 13:16:18
+ * @Email: GeekMzy@out-look.com
+ * @FilePath: /machine-geek/src/api/modules/codeGenerator.ts
+ * @Environment: big sur Js
+ * @Description: 
  */
 
 import request from '/@/utils/request'
 
 export default {
-    codeGenerator_paging(params: any) {
+    generator_paging(params: any) {
         return request<{ data: any, success: boolean }>({
-            url: '/codeGenerator/pagingTableByDatabaseName?page=' + params.page + '&size=' + params.size,
+            url: '/generator/paging?page=' + params.page + '&size=' + params.size,
             method: "get",
         })
     },
-    codeGenerator_generate(params: any) {
+    generator_generate(params: any) {
         return request<{ data: [], success: boolean }>({
-            url: '/codeGenerator/generate?moduleName=' + params.moduleName + '&tableName=' + params.tableName,
+            url: '/generator/generate?moduleName=' + params.moduleName + '&tableName=' + params.tableName,
             method: "get",
         })
     }

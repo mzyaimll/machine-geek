@@ -1,73 +1,48 @@
 /*
- *                                                     __----~~~~~~~~~~~------___
- *                                    .  .   ~~//====......          __--~ ~~
- *                    -.            \_|//     |||\\  ~~~~~~::::... /~
- *                 ___-==_       _-~o~  \/    |||  \\            _/~~-
- *         __---~~~.==~||\=_    -_--~/_-~|-   |\\   \\        _/~
- *     _-~~     .=~    |  \\-_    '-~7  /-   /  ||    \      /
- *   .~       .~       |   \\ -_    /  /-   /   ||      \   /
- *  /  ____  /         |     \\ ~-_/  /|- _/   .||       \ /
- *  |~~    ~~|--~~~~--_ \     ~==-/   | \~--===~~        .\
- *           '         ~-|      /|    |-~\~~       __--~~
- *                       |-~~-_/ |    |   ~\_   _-~            /\
- *                            /  \     \__   \/~                \__
- *                        _--~ _/ | .-~~____--~-/                  ~~==.
- *                       ((->/~   '.|||' -_|    ~~-/ ,              . _||
- *                                  -_     ~\      ~~---l__i__i__i--~~_/
- *                                  _-~-__   ~)  \--______________--~~
- *                                //.-~~~-~_--~- |-------~~~~~~~~
- *                                       //.-~~~--\
- *                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * 
- *                               神兽保佑            永无BUG
- * 
- * @Author: JackM
- * @Date: 2020-11-02 22:01:53
- * @LastEditors: JackM
- * @LastEditTime: 2020-11-23 19:35:32
+ * @Author: GeekMzy
+ * @LastEditors: GeekMzy
+ * @Date: 2021-01-07 20:29:41
+ * @LastEditTime: 2021-01-11 13:02:33
+ * @Email: GeekMzy@out-look.com
+ * @FilePath: /machine-geek/src/api/modules/role.ts
+ * @Environment: big sur Js
+ * @Description: 
  */
 
 import request from '../../utils/request'
 
 export default {
-  systemRole_add(data: any) {
+  role_add(data: any) {
     return request({
-      url: '/systemRole/add',
+      url: '/role/add',
       method: "POST",
       data: data
     })
   },
-  systemRole_delete(id: number) {
+  role_delete(id: number) {
     return request({
-      url: '/systemRole/deleteById',
+      url: '/role/deleteById',
       method: "POST",
       data: id
     })
   },
-  systemRole_update(data: any) {
+  role_update(data: any) {
     return request({
-      url: '/systemRole/updateById',
+      url: '/role/modifyById',
       method: "POST",
       data: data
     })
   },
-  systemRole_query(data: any) {
+  role_query(data: any) {
     return request({
-      url: '/systemRole/paging?page=' + data.page + '&size=' + data.size + '&keyWord=' + data.keyWord,
+      url: '/role/paging?page=' + data.page + '&size=' + data.size + '&keyWord=' + data.keyWord,
       method: "GET"
     })
   },
-  systemRole_getById(id: Number) {
+  role_getById(id: Number) {
     return request({
-      url: '/systemRole/getById?id=' + id,
+      url: '/role/getById?id=' + id,
       method: "GET"
-    })
-  },
-  systemRole_addWithAuthority(data: any) {
-    return request({
-      url: '/systemRole/addWithAuthority',
-      method: "POST",
-      data: data
     })
   },
 }
