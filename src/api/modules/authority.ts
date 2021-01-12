@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-11 16:50:36
+ * @LastEditTime: 2021-01-12 15:32:08
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/api/modules/authority.ts
  * @Environment: big sur Js
@@ -12,6 +12,11 @@
 import request from '/@/utils/request'
 
 export default {
+    /**
+     * @description: 获取权限菜单树
+     * @param {*}
+     * @return {*}
+     */
     authority_tree() {
         return request<{ data: [], success: boolean }>({
             url: '/authority/tree',
@@ -54,6 +59,17 @@ export default {
             url: '/authority/deleteById',
             method: "POST",
             data: { id: id, _method: "DELETE" }
+        })
+    },
+    /**
+     * @description: 获取当前登录用户的权限
+     * @param {*}
+     * @return {*}
+     */
+    authority_tree_current() {
+        return request({
+            url: '/authority/treeByCurrent',
+            method: "GET",
         })
     },
 }

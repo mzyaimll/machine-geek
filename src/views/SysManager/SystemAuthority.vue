@@ -1,35 +1,23 @@
 <!--
- *                        .::::.
- *                      .::::::::.
- *                     :::::::::::
- *                  ..:::::::::::'
- *               '::::::::::::'
- *                 .::::::::::
- *            '::::::::::::::..
- *                 ..::::::::::::.
- *               ``::::::::::::::::
- *                ::::``:::::::::'        .:::.
- *               ::::'   ':::::'       .::::::::.
- *             .::::'      ::::     .:::::::'::::.
- *            .:::'       :::::  .:::::::::' ':::::.
- *           .::'        :::::.:::::::::'      ':::::.
- *          .::'         ::::::::::::::'         ``::::.
- *      ...:::           ::::::::::::'              ``::.
- *     ````':.          ':::::::::'                  ::::..
- *                        '.:::::'                    ':'````..
- * 
- * @Author: JackM
- * @Date: 2020-11-03 22:30:53
- * @LastEditors: JackM
- * @LastEditTime: 2020-11-18 21:40:59
- -->
+ * @Author: GeekMzy
+ * @LastEditors: GeekMzy
+ * @Date: 2021-01-07 20:29:41
+ * @LastEditTime: 2021-01-12 17:03:05
+ * @Email: GeekMzy@out-look.com
+ * @FilePath: /machine-geek/src/views/SysManager/SystemAuthority.vue
+ * @Environment: big sur Js
+ * @Description: 
+-->
+
 <template>
   <a-table
     :columns="columns"
     :data-source="treeData"
     :row-selection="rowSelection"
     :row-key="(record) => record.id"
-  />
+    childrenColumnName="child"
+  >
+  </a-table>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
@@ -49,7 +37,7 @@ export default defineComponent({
   },
   methods: {
     fetch() {
-      api.systemAuthority.authority_tree().then((res) => {
+      api.systemAuthority.authority_tree_current().then((res) => {
         if (res.success) {
           this.treeData = res.data
         }
@@ -90,8 +78,8 @@ const columns = [
   },
   {
     title: 'Path',
-    dataIndex: 'path',
-    key: 'path',
+    dataIndex: 'uri',
+    key: 'uri',
   },
   {
     title: 'UpdateTime',

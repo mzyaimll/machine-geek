@@ -65,7 +65,6 @@ export default defineComponent({
           moduleName: obj.tableComment,
         })
       }
-      console.log('generateCode', obj)
     }
     return {
       state,

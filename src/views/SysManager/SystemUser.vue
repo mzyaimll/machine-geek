@@ -28,16 +28,70 @@
     :columns="columns"
     :data-source="this.sourceData"
     :row-key="(record) => record.id"
-    :loading="loading"
     bordered
   >
     <template #enable="{ record }">
       <span v-if="record === true">可用</span>
       <span v-else>不可用</span>
     </template>
+    <template #action="{ record }">
+      <a @click="modifyUser(record)">编辑</a>
+      <a-divider type="vertical" />
+      <a @click="deleteUser(record)">删除</a>
+    </template>
   </a-table>
+  <edit-user ref="editModel"></edit-user>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue'
+import api from '/@/api/index'
+import { PAGE_SIZE } from '/@/static/config'
+import EditUser from './model/EditUser.vue'
+export default defineComponent({
+  data() {
+    return {
+      sourceData: [],
+      columns,
+      loading: false,
+      editingKey: '',
+      paginate: {
+        size: PAGE_SIZE,
+        page: 1,
+        total: 0,
+        keyWord: '',
+      },
+    }
+  },
+  mounted() {
+    this.fetch(this.paginate)
+  },
+  methods: {
+    fetch(param: any) {
+      this.loading = true
+      api.user.account_paging(param).then((res) => {
+        if (res.success) {
+          this.sourceData = res.data.records
+          this.loading = false
+        }
+      })
+    },
+    deleteUser(obj: any) {
+      api.user.account_deleteById(obj.id).then((res) => {
+        if (res.success) {
+          alert('删除成功')
+        }
+      })
+    },
+    modifyUser(obj: any) {
+      this.$refs.editModel.changeVisible()
+      this.$refs.editModel.setData(obj)
+    },
+    submit() {},
+  },
+  components: {
+    EditUser,
+  },
+})
 const columns = [
   {
     title: 'id',
@@ -68,56 +122,17 @@ const columns = [
   {
     title: 'lastLogin',
     dataIndex: 'lastLogin',
-    width: '20%',
   },
   {
     title: 'createTime',
     dataIndex: 'createTime',
-    width: '20%',
   },
   {
-    title: 'updateTime',
-    dataIndex: 'operation',
+    title: 'action',
+    dataIndex: 'action',
+    slots: { customRender: 'action' },
   },
 ]
-import { defineComponent } from 'vue'
-import api from '/@/api/index'
-import { PAGE_SIZE } from '/@/static/config'
-
-export default defineComponent({
-  data() {
-    return {
-      sourceData: [],
-      columns,
-      loading: false,
-      editingKey: '',
-      paginate: {
-        size: PAGE_SIZE,
-        page: 1,
-        total: 0,
-        keyWord: '',
-      },
-    }
-  },
-  mounted() {
-    this.fetch(this.paginate)
-  },
-  methods: {
-    fetch(param: any) {
-      this.loading = true
-      api.user.account_paging(param).then((res) => {
-        if (res.success) {
-          this.sourceData = res.data.records
-          this.loading = false
-        }
-      })
-    },
-    handleChange(value: any, key: any, column: string | number) {},
-    edit(key: string) {},
-    save(key: any) {},
-    cancel(key: any) {},
-  },
-})
 </script>
 <style lang="scss" scoped>
 </style>

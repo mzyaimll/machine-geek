@@ -1,35 +1,18 @@
 <!--
- *                   ___====-_  _-====___
- *             _--^^^#####//      \\#####^^^--_
- *          _-^##########// (    ) \\##########^-_
- *         -############//  |\^^/|  \\############-
- *       _/############//   (@::@)   \############\_
- *      /#############((     \\//     ))#############\
- *     -###############\\    (oo)    //###############-
- *    -#################\\  / VV \  //#################-
- *   -###################\\/      \//###################-
- *  _#/|##########/\######(   /\   )######/\##########|\#_
- *  |/ |#/\#/\#/\/  \#/\##\  |  |  /##/\#/  \/\#/\#/\#| \|
- *  `  |/  V  V  `   V  \#\| |  | |/#/  V   '  V  V  \|  '
- *     `   `  `      `   / | |  | | \   '      '  '   '
- *                      (  | |  | |  )
- *                     __\ | |  | | /__
- *                    (vvv(VVV)(VVV)vvv)
- * 
- *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * 
- *                神兽保佑            永无BUG
- * 
- * @Author: JackM
- * @Date: 2020-11-03 22:29:33
- * @LastEditors: JackM
- * @LastEditTime: 2020-11-12 08:55:57
- -->
+ * @Author: GeekMzy
+ * @LastEditors: GeekMzy
+ * @Date: 2021-01-07 20:29:41
+ * @LastEditTime: 2021-01-12 15:24:04
+ * @Email: GeekMzy@out-look.com
+ * @FilePath: /machine-geek/src/views/DevTools/DataMonitor.vue
+ * @Environment: big sur Js
+ * @Description: 
+-->
 
 <template>
   <div style="width: 100vw; height: 1220px">
     <iframe
-      src="http://nat.machine-geek.cn/druid/index.html"
+      src="http://72ezgg.natappfree.cc/druid/index.html"
       frameborder="0"
       scrolling="no"
       width="100%"

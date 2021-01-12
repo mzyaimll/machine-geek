@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-12 11:55:13
+ * @LastEditTime: 2021-01-12 14:46:01
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/api/modules/codeGenerator.ts
  * @Environment: big sur Js
@@ -20,6 +20,11 @@ export default {
             method: "get",
         })
     },
+    /**
+     * @description: 生成代码特殊接口，实用二进制格式
+     * @param {any} params
+     * @return {*}
+     */
     generator_generate(params: any) {
         axios.get("/api/generator/generate", {
             params: params,
