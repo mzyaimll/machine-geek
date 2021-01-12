@@ -31,7 +31,11 @@
     :data-source="state.sourceData"
     :row-selection="rowSelection"
     :row-key="(record) => record.id"
-  />
+  >
+    <template #action="{ record }"
+      ><a @click="generateCode(record)">生成</a></template
+    >
+  </a-table>
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
@@ -53,10 +57,21 @@ export default defineComponent({
       })
     }
     fetch()
+
+    function generateCode(obj: any) {
+      if (obj) {
+        api.codeGenerator.generator_generate({
+          tableName: obj.tableName,
+          moduleName: obj.tableComment,
+        })
+      }
+      console.log('generateCode', obj)
+    }
     return {
       state,
       rowSelection,
       fetch,
+      generateCode,
     }
   },
   data() {
@@ -101,6 +116,12 @@ const columns = [
     title: 'CreateTime',
     dataIndex: 'createTime',
     key: 'createTime',
+  },
+  {
+    title: '...',
+    dataIndex: 'action',
+    key: 'action',
+    slots: { customRender: 'action' },
   },
 ]
 </script>

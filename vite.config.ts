@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-11 13:14:22
+ * @LastEditTime: 2021-01-12 10:41:14
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/vite.config.ts
  * @Environment: big sur Js
@@ -85,7 +85,7 @@ module.exports = {
   assetsDir: "",
   proxy: {
     '/api': {
-      target: 'http://4pikm7.natappfree.cc/',
+      target: 'http://pypvr2.natappfree.cc',
       changeOrigin: true,
       rewrite: path => path.replace(/^\/api/, '')
     }

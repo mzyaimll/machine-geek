@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-11 13:07:54
+ * @LastEditTime: 2021-01-11 16:50:36
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/api/modules/authority.ts
  * @Environment: big sur Js
@@ -44,6 +44,11 @@ export default {
             method: "GET"
         })
     },
+    /**
+     * @description: 
+     * @param {number} id
+     * @return {*}
+     */
     authority_delete(id: number) {
         return request({
             url: '/authority/deleteById',
