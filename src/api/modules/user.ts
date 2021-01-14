@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-11 13:04:19
+ * @LastEditTime: 2021-01-14 12:50:08
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/api/modules/user.ts
  * @Environment: big sur Js
@@ -29,8 +29,8 @@ export default {
   account_modifyById(data: any) {
     return request({
       url: '/account/modifyById',
-      method: "POST",
-      data: { account: data, _method: "PUT" }
+      method: "PUT",
+      data: data
     })
   },
   account_paging(data: any) {

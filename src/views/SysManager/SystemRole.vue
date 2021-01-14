@@ -1,80 +1,38 @@
 <!--
- *                        .::::.
- *                      .::::::::.
- *                     :::::::::::
- *                  ..:::::::::::'
- *               '::::::::::::'
- *                 .::::::::::
- *            '::::::::::::::..
- *                 ..::::::::::::.
- *               ``::::::::::::::::
- *                ::::``:::::::::'        .:::.
- *               ::::'   ':::::'       .::::::::.
- *             .::::'      ::::     .:::::::'::::.
- *            .:::'       :::::  .:::::::::' ':::::.
- *           .::'        :::::.:::::::::'      ':::::.
- *          .::'         ::::::::::::::'         ``::::.
- *      ...:::           ::::::::::::'              ``::.
- *     ````':.          ':::::::::'                  ::::..
- *                        '.:::::'                    ':'````..
- * 
- * @Author: JackM
- * @Date: 2020-11-03 22:30:53
- * @LastEditors: JackM
- * @LastEditTime: 2020-11-05 22:44:38
- -->
+ * @Autor: GeekMzy
+ * @Date: 2021-01-14 10:30:02
+ * @LastEditors: GeekMzy
+ * @LastEditTime: 2021-01-14 13:56:58
+ * @FilePath: /machine-geek/src/views/SysManager/SystemRole.vue
+-->
+
 <template>
   <a-table
     :columns="columns"
-    :data-source="this.sourceData"
+    :data-source="table.sourceData"
     :row-key="(record) => record.id"
     :loading="loading"
     bordered
   >
+    <template #action="{ record }">
+      <a @click="modifyRole(record)">编辑</a>
+      <a-divider type="vertical" />
+      <a @click="deleteRole(record)">删除</a>
+    </template>
   </a-table>
+  <eidt-role ref="editRole" @submit="submit"></eidt-role>
 </template>
 <script lang="ts">
-const columns = [
-  {
-    title: 'id',
-    dataIndex: 'id',
-    width: '10%',
-  },
-  {
-    title: 'name',
-    dataIndex: 'name',
-    width: '15%',
-  },
-  {
-    title: 'key',
-    dataIndex: 'key',
-    width: '15%',
-  },
-  {
-    title: 'description',
-    dataIndex: 'description',
-    width: '15%',
-  },
-  {
-    title: 'version',
-    dataIndex: 'version',
-    width: '15%',
-  },
-  {
-    title: 'disable',
-    dataIndex: 'disable',
-    width: '15%',
-  },
-]
-import { defineComponent } from 'vue'
-import api from '/@/api/index'
+import { defineComponent, reactive, toRefs, ref, onMounted } from 'vue'
 import { PAGE_SIZE } from '/@/static/config'
+import api from '/@/api/index'
+import EidtRole from './model/EditRole.vue'
 
 export default defineComponent({
-  data() {
-    return {
+  setup(props, context) {
+    let state = reactive({})
+    let table = reactive({
       sourceData: [],
-      columns,
       loading: false,
       paginate: {
         size: PAGE_SIZE,
@@ -82,25 +40,70 @@ export default defineComponent({
         total: 0,
         keyWord: '',
       },
-    }
-  },
-  mounted() {
-    this.fetch(this.paginate)
-  },
-  methods: {
-    fetch(param: any) {
-      this.loading = true
+    })
+    const editRole = ref(null)
+    onMounted(() => {
+      fetch(table.paginate)
+    })
+    function fetch(param: any) {
+      table.loading = true
       api.role.role_query(param).then((res) => {
         if (res.success) {
-          this.sourceData = res.data.records
-          this.loading = false
+          table.sourceData = res.data.records
+          table.loading = false
         }
       })
-    },
-    handleChange(value: any, key: any, column: string | number) {},
-    edit(key: string) {},
-    save(key: any) {},
-    cancel(key: any) {},
+    }
+    function submit(obj: any) {
+      console.log(obj)
+    }
+    const columns = [
+      {
+        title: 'id',
+        dataIndex: 'id',
+        width: '10%',
+      },
+      {
+        title: 'name',
+        dataIndex: 'name',
+        width: '15%',
+      },
+      {
+        title: 'key',
+        dataIndex: 'key',
+        width: '15%',
+      },
+      {
+        title: 'version',
+        dataIndex: 'version',
+        width: '15%',
+      },
+      {
+        title: 'createTime',
+        dataIndex: 'createTime',
+        width: '15%',
+      },
+      {
+        title: 'udateTime',
+        dataIndex: 'udateTime',
+        width: '15%',
+      },
+      {
+        title: 'action',
+        dataIndex: 'action',
+        slots: { customRender: 'action' },
+      },
+    ]
+    return {
+      ...toRefs({ state, table }),
+      columns,
+      editRole,
+      fetch,
+      submit,
+    }
+  },
+  components: {
+    EidtRole,
   },
 })
 </script>
