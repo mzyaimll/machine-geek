@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-15 14:27:23
+ * @LastEditTime: 2021-01-15 14:35:18
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/views/SysManager/SystemAuthority.vue
  * @Environment: big sur Js
@@ -14,6 +14,7 @@
     :columns="columns"
     :data-source="treeData"
     childrenColumnName="child"
+    :loading="loading"
   >
   </a-table>
 </template>
@@ -28,6 +29,7 @@ export default defineComponent({
       columns,
       rowSelection,
       treeData: [],
+      loading: false,
     }
   },
   mounted() {
@@ -35,9 +37,11 @@ export default defineComponent({
   },
   methods: {
     fetch() {
+      this.loading = true
       api.authority.authority_tree_current().then((res) => {
         if (res.success) {
           this.treeData = res.data.routes
+          this.loading = false
         }
       })
     },

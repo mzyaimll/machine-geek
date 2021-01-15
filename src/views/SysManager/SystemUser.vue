@@ -2,12 +2,11 @@
  * @Autor: GeekMzy
  * @Date: 2021-01-14 10:30:02
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-01-15 11:31:19
+ * @LastEditTime: 2021-01-15 14:33:22
  * @FilePath: /machine-geek/src/views/SysManager/SystemUser.vue
 -->
 
 <template>
-  <div></div>
   <a-table
     :columns="columns"
     :data-source="table.sourceData"

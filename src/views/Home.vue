@@ -87,21 +87,16 @@
 import Logo from "/@/components/Logo.vue";
 import treeData from "/@/treeData";
 import MenuIcon from "/@/static/menuIcon";
-import { getCurrentInstance, defineComponent, reactive } from "vue";
+import { getCurrentInstance, defineComponent, reactive, onMounted } from "vue";
 import {
-  // menu
-  PieChartOutlined,
-  DesktopOutlined,
-  UserOutlined,
-  TeamOutlined,
-  FileOutlined,
   // header
   HomeFilled,
   SettingFilled,
 } from "@ant-design/icons-vue";
+import api from '/@/api/index'
 
 export default defineComponent({
-  setup(props, ctx) {
+  setup (props, ctx) {
     let instance = getCurrentInstance();
     const state = reactive({
       data: [],
@@ -110,11 +105,22 @@ export default defineComponent({
     });
     state.selectedKeys.push("1");
     state.data = treeData.data;
+
+    function fetch () {
+      api.authority.authority_tree_current().then(res => {
+        if (res.success) {
+          console.log('authority_tree_current', res);
+        }
+      })
+    }
+    onMounted(() => {
+      fetch()
+    })
     return {
       state,
     };
   },
-  data() {
+  data () {
     return {
       breadcrumb: [],
       MenuIcon,
@@ -122,7 +128,7 @@ export default defineComponent({
     };
   },
   methods: {
-    menuClick(e) {
+    menuClick (e) {
       if (e) {
         this.breadcrumb = e.key.slice(1).split("/");
         this.$router.push(e.key);
@@ -131,11 +137,6 @@ export default defineComponent({
   },
   components: {
     Logo,
-    PieChartOutlined,
-    DesktopOutlined,
-    UserOutlined,
-    TeamOutlined,
-    FileOutlined,
     HomeFilled,
     SettingFilled,
   },
