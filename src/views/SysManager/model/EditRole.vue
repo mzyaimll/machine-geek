@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-12 18:00:37
- * @LastEditTime: 2021-01-15 14:03:20
+ * @LastEditTime: 2021-01-15 14:12:34
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/views/SysManager/model/EditRole.vue
  * @Environment: big sur Js
@@ -34,7 +34,7 @@
           <a-tree
             checkable
             :replaceFields="state.replaceFields"
-            v-model:checkedKeys="form.authorities"
+            v-model:checkedKeys="form.authorityIds"
             :tree-data="tree.treeData"
             @select="tree.onSelect"
             @check="tree.onCheck"
@@ -69,7 +69,7 @@ export default defineComponent({
     let form = reactive({
       id: '',
       name: '',
-      authorities: [],
+      authorityIds: [],
     })
     function changeVisible () {
       state.visible = !state.visible
@@ -85,7 +85,7 @@ export default defineComponent({
           Object.assign(form, {
             id: res.data.role.id,
             name: res.data.role.name,
-            authorities: res.data.authorities.map(x => x.id),
+            authorityIds: res.data.authorities.map(x => x.id),
           })
           console.log(form);
           state.loading = false
@@ -109,7 +109,7 @@ export default defineComponent({
       Object.assign(form, {
         id: '',
         name: '',
-        authorities: [],
+        authorityIds: [],
       })
     }
     const tree = {
@@ -117,7 +117,7 @@ export default defineComponent({
       onSelect: (selectedKeys, info) => {
       },
       onCheck: (checkedKeys, info) => {
-        form.authorities = checkedKeys
+        form.authorityIds = checkedKeys
       },
     }
 

@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-15 14:06:33
+ * @LastEditTime: 2021-01-15 14:27:23
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/views/SysManager/SystemAuthority.vue
  * @Environment: big sur Js
@@ -13,8 +13,6 @@
   <a-table
     :columns="columns"
     :data-source="treeData"
-    :row-selection="rowSelection"
-    :row-key="(record) => record.id"
     childrenColumnName="child"
   >
   </a-table>
@@ -39,7 +37,7 @@ export default defineComponent({
     fetch() {
       api.authority.authority_tree_current().then((res) => {
         if (res.success) {
-          this.treeData = res.data
+          this.treeData = res.data.routes
         }
       })
     },

@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-12 15:32:08
+ * @LastEditTime: 2021-01-15 14:09:52
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/api/modules/authority.ts
  * @Environment: big sur Js
@@ -68,7 +68,7 @@ export default {
      */
     authority_tree_current() {
         return request({
-            url: '/authority/treeByCurrent',
+            url: '/authority/getMyAuthorities',
             method: "GET",
         })
     },
