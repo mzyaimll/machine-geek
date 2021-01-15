@@ -18,7 +18,7 @@ export default {
      * @return {*}
      */
     authority_tree() {
-        return request<{ data: [], success: boolean }>({
+        return request({
             url: '/authority/tree',
             method: "get",
         })

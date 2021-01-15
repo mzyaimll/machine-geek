@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-12 18:00:37
- * @LastEditTime: 2021-01-14 16:02:34
+ * @LastEditTime: 2021-01-15 14:03:20
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/views/SysManager/model/EditRole.vue
  * @Environment: big sur Js
@@ -10,82 +10,95 @@
 -->
 <template>
   <a-modal
-    title="用户"
+    title="role"
     :width="600"
     :footer="null"
     v-model:visible="state.visible"
   >
-    <a-form
-      :model="form"
-      :label-col="state.labelCol"
-      :wrapper-col="state.wrapperCol"
-    >
-      <a-form-item label="rold id">
-        <a-input
-          :disabled="state.disabled"
-          v-model:value="form.roldId"
-        ></a-input>
-      </a-form-item>
-      <a-form-item label="rolem name">
-        <a-input
-          :disabled="state.disabled"
-          placeholder="please input name"
-          v-model:value="form.name"
-        ></a-input>
-      </a-form-item>
-      <a-form-item label="desc">
-        <a-input
-          :disabled="state.disabled"
-          placeholder="please input desc"
-          v-model:value="form.desc"
-        ></a-input>
-      </a-form-item>
-      <a-form-item label="authority">
-        <a-switch v-model:checked="form.authority" />
-      </a-form-item>
-      <a-form-item label="权限">
-        <a-tree
-          checkable
-          :tree-data="tree.treeData"
-          v-model:expandedKeys="tree.expandedKeys"
-          v-model:selectedKeys="tree.selectedKeys"
-          v-model:checkedKeys="tree.checkedKeys"
-          @select="tree.onSelect"
-          @check="tree.onCheck"
-        />
-      </a-form-item>
-      <a-form-item :wrapper-col="{ span: 20, offset: 4 }">
-        <a-button type="primary" @click="onSubmit"> submit </a-button>
-        <a-button style="margin-left: 10px" @click="changeVisible">
-          Cancel
-        </a-button>
-      </a-form-item>
-    </a-form>
+    <a-spin :spinning="state.loading">
+      <a-form
+        :model="form"
+        :label-col="state.labelCol"
+        :wrapper-col="state.wrapperCol"
+      >
+        <a-form-item label="role id">
+          <a-input :disabled="state.disabled" v-model:value="form.id"></a-input>
+        </a-form-item>
+        <a-form-item label="role name">
+          <a-input
+            placeholder="please input name"
+            v-model:value="form.name"
+          ></a-input>
+        </a-form-item>
+        <a-form-item label="authorities">
+          <a-tree
+            checkable
+            :replaceFields="state.replaceFields"
+            v-model:checkedKeys="form.authorities"
+            :tree-data="tree.treeData"
+            @select="tree.onSelect"
+            @check="tree.onCheck"
+          />
+        </a-form-item>
+        <a-form-item :wrapper-col="{ span: 20, offset: 4 }">
+          <a-button type="primary" @click="onSubmit"> submit </a-button>
+          <a-button style="margin-left: 10px" @click="changeVisible">
+            Cancel
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </a-spin>
   </a-modal>
 </template>|
 <script>
-import { toRefs, defineComponent, reactive } from 'vue'
+import { toRefs, defineComponent, reactive, onMounted, compile } from 'vue'
 import { message } from 'ant-design-vue'
+import api from '/@/api/index'
+
+
 export default defineComponent({
   setup (props, { emit }) {
     let state = reactive({
-      visible: true,
+      visible: false,
+      loading: false,
       labelCol: { span: 4 },
       wrapperCol: { span: 18 },
       disabled: true,
+      replaceFields: { children: 'child', title: 'name', key: 'id' }
     })
     let form = reactive({
-      roldId: '',
+      id: '',
       name: '',
-      desc: '',
-      authority: false,
+      authorities: [],
     })
     function changeVisible () {
       state.visible = !state.visible
+      resetForm()
     }
-    function setData (data) {
-      Object.assign(form, data)
-      console.log(form);
+    function setData (id) {
+      getTree(id)
+    }
+    function getRoleData (id) {
+      state.loading = true
+      api.role.role_getById(id).then(res => {
+        if (res.success) {
+          Object.assign(form, {
+            id: res.data.role.id,
+            name: res.data.role.name,
+            authorities: res.data.authorities.map(x => x.id),
+          })
+          console.log(form);
+          state.loading = false
+        }
+      })
+    }
+    function getTree (id) {
+      api.authority.authority_tree().then(res => {
+        if (res.success) {
+          tree.treeData = res.data
+          getRoleData(id)
+        }
+      })
     }
     function onSubmit () {
       emit('submit', form)   //传输数据
@@ -94,43 +107,17 @@ export default defineComponent({
     }
     function resetForm () {
       Object.assign(form, {
-        roldId: '',
+        id: '',
         name: '',
-        desc: '',
-        authority: false,
+        authorities: [],
       })
     }
     const tree = {
-      treeData: [
-        {
-          title: 'parent 1',
-          key: '0-0',
-          children: [
-            {
-              title: 'parent 1-0',
-              key: '0-0-0',
-              disabled: true,
-              children: [
-                { title: 'leaf', key: '0-0-0-0', disableCheckbox: true },
-                { title: 'leaf', key: '0-0-0-1' },
-              ],
-            },
-            {
-              title: 'parent 1-1',
-              key: '0-0-1',
-              children: [{ key: '0-0-1-0', slots: { title: 'title0010' } }],
-            },
-          ],
-        },
-      ],
-      expandedKeys: ['0-0-0', '0-0-1'],
-      selectedKeys: ['0-0-0', '0-0-1'],
-      checkedKeys: ['0-0-0', '0-0-1'],
+      treeData: [],
       onSelect: (selectedKeys, info) => {
-        console.log('selected', selectedKeys, info);
       },
       onCheck: (checkedKeys, info) => {
-        console.log('onCheck', checkedKeys, info);
+        form.authorities = checkedKeys
       },
     }
 

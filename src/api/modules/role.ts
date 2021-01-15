@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-14 17:42:34
+ * @LastEditTime: 2021-01-15 13:59:39
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/api/modules/role.ts
  * @Environment: big sur Js
@@ -35,7 +35,7 @@ export default {
   role_update(data: any) {
     return request({
       url: '/role/modifyById',
-      method: "POST",
+      method: "PUT",
       data: data
     })
   },

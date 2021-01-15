@@ -2,7 +2,7 @@
  * @Autor: GeekMzy
  * @Date: 2021-01-14 10:30:02
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-01-14 14:03:57
+ * @LastEditTime: 2021-01-15 13:58:37
  * @FilePath: /machine-geek/src/views/SysManager/SystemRole.vue
 -->
 
@@ -25,6 +25,7 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, ref, onMounted } from 'vue'
 import { PAGE_SIZE } from '/@/static/config'
+import { Modal, message } from 'ant-design-vue'
 import api from '/@/api/index'
 import EidtRole from './model/EditRole.vue'
 
@@ -45,6 +46,25 @@ export default defineComponent({
     onMounted(() => {
       fetch(table.paginate)
     })
+    function modifyRole(obj: any) {
+      editRole.value.changeVisible()
+      editRole.value.setData(obj.id)
+    }
+    function deleteRole(obj: any) {
+      Modal.confirm({
+        title: 'Do you Want to delete these account?',
+        onOk() {
+          api.role.role_delete(obj.id).then((res) => {
+            if (res.success) {
+              message.success('success')
+            }
+          })
+        },
+        onCancel() {
+          message.info('cancel')
+        },
+      })
+    }
     function fetch(param: any) {
       table.loading = true
       api.role.role_query(param).then((res) => {
@@ -55,7 +75,12 @@ export default defineComponent({
       })
     }
     function submit(obj: any) {
-      console.log(obj)
+      api.role.role_update(obj).then((res) => {
+        if (res.success) {
+          message.success('success')
+          fetch(table.paginate)
+        }
+      })
     }
     const columns = [
       {
@@ -98,6 +123,8 @@ export default defineComponent({
       ...toRefs({ state, table }),
       columns,
       editRole,
+      modifyRole,
+      deleteRole,
       fetch,
       submit,
     }

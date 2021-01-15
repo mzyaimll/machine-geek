@@ -2,7 +2,7 @@
  * @Autor: GeekMzy
  * @Date: 2021-01-14 10:30:02
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-01-14 18:17:36
+ * @LastEditTime: 2021-01-15 11:31:19
  * @FilePath: /machine-geek/src/views/SysManager/SystemUser.vue
 -->
 
@@ -59,10 +59,18 @@ export default defineComponent({
       })
     }
     function deleteUser(obj: any) {
-      api.user.account_deleteById(obj.id).then((res) => {
-        if (res.success) {
-          alert('删除成功')
-        }
+      Modal.confirm({
+        title: 'Do you Want to delete these account?',
+        onOk() {
+          api.user.account_deleteById(obj.id).then((res) => {
+            if (res.success) {
+              message.success('success')
+            }
+          })
+        },
+        onCancel() {
+          message.info('cancel')
+        },
       })
     }
     function modifyUser(obj: any) {

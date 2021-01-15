@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-12 17:03:05
+ * @LastEditTime: 2021-01-15 14:06:33
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/views/SysManager/SystemAuthority.vue
  * @Environment: big sur Js
@@ -37,7 +37,7 @@ export default defineComponent({
   },
   methods: {
     fetch() {
-      api.systemAuthority.authority_tree_current().then((res) => {
+      api.authority.authority_tree_current().then((res) => {
         if (res.success) {
           this.treeData = res.data
         }
