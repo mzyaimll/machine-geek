@@ -2,7 +2,7 @@
  * @Autor: GeekMzy
  * @Date: 2021-01-14 10:30:02
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-01-14 13:54:58
+ * @LastEditTime: 2021-01-14 18:17:36
  * @FilePath: /machine-geek/src/views/SysManager/SystemUser.vue
 -->
 
@@ -20,6 +20,8 @@
       <span v-else>不可用</span>
     </template>
     <template #action="{ record }">
+      <a @click="resetPwd(record)">重置</a>
+      <a-divider type="vertical" />
       <a @click="modifyUser(record)">编辑</a>
       <a-divider type="vertical" />
       <a @click="deleteUser(record)">删除</a>
@@ -43,7 +45,6 @@ export default defineComponent({
         page: 1,
         total: 0,
         keyWord: '',
-        S,
       },
       loading: false,
     })
@@ -52,7 +53,7 @@ export default defineComponent({
       table.loading = true
       api.user.account_paging(param).then((res) => {
         if (res.success) {
-          Object.assign(table.sourceData, res.data.records)
+          table.sourceData = res.data.records
           table.loading = false
         }
       })
@@ -66,7 +67,7 @@ export default defineComponent({
     }
     function modifyUser(obj: any) {
       editModel.value.changeVisible()
-      editModel.value.setData(obj)
+      editModel.value.setData(obj.id)
     }
     function submit(obj: any) {
       api.user.account_modifyById(obj).then((res) => {
@@ -75,6 +76,9 @@ export default defineComponent({
           fetch(table.paginate)
         }
       })
+    }
+    function resetPwd(obj: any) {
+      console.log(obj)
     }
     onMounted(() => {
       fetch(table.paginate)
@@ -97,13 +101,13 @@ export default defineComponent({
         slots: { customRender: 'enable' },
       },
       {
-        title: 'version',
-        dataIndex: 'version',
+        title: 'email',
+        dataIndex: 'email',
         width: '15%',
       },
       {
-        title: 'ip',
-        dataIndex: 'ip',
+        title: 'mobile',
+        dataIndex: 'mobile',
         width: '10%',
       },
       {
@@ -128,6 +132,7 @@ export default defineComponent({
       fetch,
       deleteUser,
       columns,
+      resetPwd,
     }
   },
   components: {

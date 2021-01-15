@@ -2,7 +2,7 @@
  * @Author: GeekMzy
  * @LastEditors: GeekMzy
  * @Date: 2021-01-07 20:29:41
- * @LastEditTime: 2021-01-11 13:02:33
+ * @LastEditTime: 2021-01-14 17:42:34
  * @Email: GeekMzy@out-look.com
  * @FilePath: /machine-geek/src/api/modules/role.ts
  * @Environment: big sur Js
@@ -24,6 +24,12 @@ export default {
       url: '/role/deleteById',
       method: "POST",
       data: id
+    })
+  },
+  role_all() {
+    return request({
+      url: '/role/list',
+      method: 'GET',
     })
   },
   role_update(data: any) {
