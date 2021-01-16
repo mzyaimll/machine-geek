@@ -8,7 +8,7 @@
         mode="inline"
       >
         <template v-for="items in state.data">
-          <a-menu-item v-if="items.children.length === 0" :key="items.path">
+          <a-menu-item v-if="items.child.length === 0" :key="items.uri">
             <svg
               :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
               aria-hidden="true"
@@ -17,7 +17,7 @@
             </svg>
             <span class="menu_text">{{ items.name }}</span>
           </a-menu-item>
-          <a-sub-menu v-else :key="items.path">
+          <a-sub-menu v-else :key="items.uri">
             <template #title>
               <svg
                 :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
@@ -27,7 +27,7 @@
               </svg>
               <span class="menu_text">{{ items.name }}</span>
             </template>
-            <a-menu-item v-for="item in items.children" :key="item.path">
+            <a-menu-item v-for="item in items.child" :key="item.uri">
               <svg
                 :class="!collapsed ? 'icon' : 'icon menu-collapsed'"
                 aria-hidden="true"
@@ -85,9 +85,9 @@
 
 <script>
 import Logo from "/@/components/Logo.vue";
-import treeData from "/@/treeData";
 import MenuIcon from "/@/static/menuIcon";
 import { getCurrentInstance, defineComponent, reactive, onMounted } from "vue";
+import lockr from '/@/utils/lockr'
 import {
   // header
   HomeFilled,
@@ -104,12 +104,12 @@ export default defineComponent({
       selectedKeys: [],
     });
     state.selectedKeys.push("1");
-    state.data = treeData.data;
 
     function fetch () {
       api.authority.authority_tree_current().then(res => {
         if (res.success) {
-          console.log('authority_tree_current', res);
+          state.data = res.data.routes
+          lockr.set('APIS', res.data.apis)
         }
       })
     }
