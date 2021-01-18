@@ -14,9 +14,18 @@
     :loading="table.loading"
     bordered
   >
-    <template #enable="{ record }">
-      <span v-if="record === true">可用</span>
-      <span v-else>不可用</span>
+    <!-- 自定义头像 -->
+    <template #picture="{ text }">
+      <a-avatar size="large" :src="'/api'+text" />
+    </template>
+    <!-- 自定义标签 -->
+    <template #enable="{ text }">
+      <a-tag v-if="text" color="#87d068">
+        启用
+      </a-tag>
+      <a-tag v-else color="#f50">
+        禁用
+      </a-tag>
     </template>
     <template #action="{ record }">
       <a @click="resetPwd(record)">重置</a>
@@ -90,6 +99,7 @@ export default defineComponent({
     onMounted(() => {
       fetch(table.paginate)
     })
+    // 表格列
     const columns = [
       {
         title: 'id',
@@ -97,25 +107,28 @@ export default defineComponent({
         width: '10%',
       },
       {
+        title: 'picture',
+        dataIndex: 'picture',
+        align:'center',
+        slots: {customRender: 'picture'}
+      },
+      {
         title: 'name',
         dataIndex: 'name',
-        width: '15%',
       },
       {
         title: 'enable',
         dataIndex: 'enable',
-        width: '15%',
+        align:'center',
         slots: { customRender: 'enable' },
       },
       {
         title: 'email',
         dataIndex: 'email',
-        width: '15%',
       },
       {
         title: 'mobile',
         dataIndex: 'mobile',
-        width: '10%',
       },
       {
         title: 'lastLogin',
