@@ -66,7 +66,7 @@ export default {
      * @param {*}
      * @return {*}
      */
-    authority_tree_current() {
+    authority_get_my_authorities() {
         return request({
             url: '/authority/getMyAuthorities',
             method: "GET",

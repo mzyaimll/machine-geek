@@ -106,7 +106,7 @@ export default defineComponent({
     state.selectedKeys.push("1");
 
     function fetch () {
-      api.authority.authority_tree_current().then(res => {
+      api.authority.authority_get_my_authorities().then(res => {
         if (res.success) {
           state.data = res.data.routes
         }
