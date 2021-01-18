@@ -106,17 +106,11 @@ export default defineComponent({
     state.selectedKeys.push("1");
 
     function fetch () {
-      if (lockr.get('MENUS') && lockr.get('APIS')) {
-        state.data = lockr.get('MENUS')
-      } else {
-        api.authority.authority_tree_current().then(res => {
-          if (res.success) {
-            state.data = res.data.routes
-            lockr.set('APIS', res.data.apis)
-            lockr.set('MENUS', res.data.routes)
-          }
-        })
-      }
+      api.authority.authority_tree_current().then(res => {
+        if (res.success) {
+          state.data = res.data.routes
+        }
+      })
     }
     onMounted(() => {
       fetch()
