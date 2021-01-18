@@ -38,9 +38,9 @@ export default defineComponent({
   methods: {
     fetch() {
       this.loading = true
-      api.authority.authority_tree_current().then((res) => {
+      api.authority.authority_tree().then((res) => {
         if (res.success) {
-          this.treeData = res.data.routes
+          this.treeData = res.data
           this.loading = false
         }
       })
