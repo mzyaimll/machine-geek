@@ -2,7 +2,7 @@
  * @Autor: GeekMzy
  * @Date: 2021-01-14 10:30:02
  * @LastEditors: GeekMzy
- * @LastEditTime: 2021-01-15 13:58:37
+ * @LastEditTime: 2021-01-18 12:29:23
  * @FilePath: /machine-geek/src/views/SysManager/SystemRole.vue
 -->
 
@@ -11,7 +11,7 @@
     :columns="columns"
     :data-source="table.sourceData"
     :row-key="(record) => record.id"
-    :loading="loading"
+    :loading="table.loading"
     bordered
   >
     <template #action="{ record }">
