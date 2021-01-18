@@ -40,8 +40,8 @@
  */
 
 export default {
-    path: "/DataCenter",
-    name: "DataCenter",
+    path: "/Dashboard",
+    name: "Dashboard",
     component: () => import("/@/views/DataCenter/index.vue"),
     children: [
     ]

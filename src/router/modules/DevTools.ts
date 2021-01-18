@@ -1,4 +1,11 @@
 /*
+ * @Autor: GeekMzy
+ * @Date: 2021-01-14 10:30:02
+ * @LastEditors: GeekMzy
+ * @LastEditTime: 2021-01-18 12:26:17
+ * @FilePath: /machine-geek/src/router/modules/DevTools.ts
+ */
+/*
  *                        _oo0oo_
  *                       o8888888o
  *                       88" . "88
@@ -36,22 +43,22 @@ export default {
     component: () => import("/@/views/DevTools/index.vue"),
     children: [
         {
-            path: "/DevTools/CodeGenerator",
+            path: "/CodeGenerator",
             name: "CodeGenerator",
             component: () => import("/@/views/DevTools/CodeGenerator.vue"),
         },
         {
-            path: "/DevTools/DataMonitor",
+            path: "/Monitor",
             name: "DataInfo",
             component: () => import("/@/views/DevTools/DataMonitor.vue"),
         },
         {
-            path: "/DevTools/SystemException",
+            path: "/Exception",
             name: "ExceptionInfo",
             component: () => import("/@/views/DevTools/SystemException.vue"),
         },
         {
-            path: "/DevTools/Documentation",
+            path: "/DevDoc",
             name: "Documentation",
             component: () => import("/@/views/DevTools/Documentation.vue"),
         },

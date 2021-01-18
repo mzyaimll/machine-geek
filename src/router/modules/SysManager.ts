@@ -1,4 +1,11 @@
 /*
+ * @Autor: GeekMzy
+ * @Date: 2021-01-14 10:30:02
+ * @LastEditors: GeekMzy
+ * @LastEditTime: 2021-01-18 12:27:01
+ * @FilePath: /machine-geek/src/router/modules/SysManager.ts
+ */
+/*
  * _______________#########_______________________ 
  * ______________############_____________________ 
  * ______________#############____________________ 
@@ -35,17 +42,17 @@ export default {
     component: () => import("/@/views/SysManager/index.vue"),
     children: [
         {
-            path: "/MANAGEMENT/SystemUser",
-            name: "SystemUser",
+            path: "/Account",
+            name: "Account",
             component: () => import("/@/views/SysManager/SystemUser.vue"),
         },
         {
-            path: "/MANAGEMENT/SystemRole",
+            path: "/Role",
             name: "SystemRole",
             component: () => import("/@/views/SysManager/SystemRole.vue"),
         },
         {
-            path: "/MANAGEMENT/SystemAuthority",
+            path: "/Authority",
             name: "SystemAuthority",
             component: () => import("/@/views/SysManager/SystemAuthority.vue"),
         },
