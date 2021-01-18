@@ -12,7 +12,7 @@
 <template>
   <div style="width: 100vw; height: 1220px">
     <iframe
-      src="http://nat.machine-geek.cn/druid/index.html"
+      src="/api/druid/index.html"
       frameborder="0"
       scrolling="no"
       width="100%"
